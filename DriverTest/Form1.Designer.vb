@@ -46,6 +46,7 @@ Partial Class Form1
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.SelectToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.SystablesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ConnectionToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.TestToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
@@ -58,6 +59,8 @@ Partial Class Form1
         Me.CProperty = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Value = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.SplitContainer2 = New System.Windows.Forms.SplitContainer()
+        Me.WindowToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.NewWindowToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Panel1.SuspendLayout()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer1.Panel1.SuspendLayout()
@@ -153,8 +156,8 @@ Partial Class Form1
         'SplitContainer1.Panel2
         '
         Me.SplitContainer1.Panel2.Controls.Add(Me.DataGridView1)
-        Me.SplitContainer1.Size = New System.Drawing.Size(699, 371)
-        Me.SplitContainer1.SplitterDistance = 232
+        Me.SplitContainer1.Size = New System.Drawing.Size(698, 371)
+        Me.SplitContainer1.SplitterDistance = 231
         Me.SplitContainer1.TabIndex = 6
         '
         'queryHolder
@@ -162,11 +165,13 @@ Partial Class Form1
         Me.queryHolder.Dock = System.Windows.Forms.DockStyle.Fill
         Me.queryHolder.Location = New System.Drawing.Point(0, 0)
         Me.queryHolder.Name = "queryHolder"
-        Me.queryHolder.Size = New System.Drawing.Size(230, 369)
+        Me.queryHolder.Size = New System.Drawing.Size(229, 369)
         Me.queryHolder.TabIndex = 0
         '
         'DataGridView1
         '
+        Me.DataGridView1.AllowUserToAddRows = False
+        Me.DataGridView1.AllowUserToDeleteRows = False
         Me.DataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None
         DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control
@@ -188,6 +193,7 @@ Partial Class Form1
         Me.DataGridView1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DataGridView1.Location = New System.Drawing.Point(0, 0)
         Me.DataGridView1.Name = "DataGridView1"
+        Me.DataGridView1.ReadOnly = True
         DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control
         DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -229,7 +235,7 @@ Partial Class Form1
         'MenuStrip1
         '
         Me.MenuStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.QuickToolStripMenuItem, Me.QueryToolStripMenuItem1, Me.ConnectionToolStripMenuItem1, Me.ViewToolStripMenuItem})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.QuickToolStripMenuItem, Me.QueryToolStripMenuItem1, Me.ConnectionToolStripMenuItem1, Me.ViewToolStripMenuItem, Me.WindowToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Padding = New System.Windows.Forms.Padding(4, 2, 0, 2)
@@ -270,7 +276,7 @@ Partial Class Form1
         '
         'SelectToolStripMenuItem1
         '
-        Me.SelectToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SystablesToolStripMenuItem})
+        Me.SelectToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SystablesToolStripMenuItem, Me.ToolStripMenuItem2})
         Me.SelectToolStripMenuItem1.Name = "SelectToolStripMenuItem1"
         Me.SelectToolStripMenuItem1.Size = New System.Drawing.Size(115, 22)
         Me.SelectToolStripMenuItem1.Text = "Select"
@@ -278,8 +284,14 @@ Partial Class Form1
         'SystablesToolStripMenuItem
         '
         Me.SystablesToolStripMenuItem.Name = "SystablesToolStripMenuItem"
-        Me.SystablesToolStripMenuItem.Size = New System.Drawing.Size(126, 22)
+        Me.SystablesToolStripMenuItem.Size = New System.Drawing.Size(167, 22)
         Me.SystablesToolStripMenuItem.Text = "sys_tables"
+        '
+        'ToolStripMenuItem2
+        '
+        Me.ToolStripMenuItem2.Name = "ToolStripMenuItem2"
+        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(167, 22)
+        Me.ToolStripMenuItem2.Text = "sys_tablecolumns"
         '
         'ConnectionToolStripMenuItem1
         '
@@ -333,6 +345,7 @@ Partial Class Form1
         '
         'connectionGrid
         '
+        Me.connectionGrid.AllowDrop = True
         Me.connectionGrid.AllowUserToAddRows = False
         Me.connectionGrid.AllowUserToDeleteRows = False
         Me.connectionGrid.BorderStyle = System.Windows.Forms.BorderStyle.None
@@ -344,7 +357,7 @@ Partial Class Form1
         Me.connectionGrid.Name = "connectionGrid"
         Me.connectionGrid.RowHeadersVisible = False
         Me.connectionGrid.RowHeadersWidth = 51
-        Me.connectionGrid.Size = New System.Drawing.Size(221, 369)
+        Me.connectionGrid.Size = New System.Drawing.Size(222, 369)
         Me.connectionGrid.TabIndex = 9
         '
         'CProperty
@@ -380,8 +393,21 @@ Partial Class Form1
         '
         Me.SplitContainer2.Panel2.Controls.Add(Me.connectionGrid)
         Me.SplitContainer2.Size = New System.Drawing.Size(926, 371)
-        Me.SplitContainer2.SplitterDistance = 699
+        Me.SplitContainer2.SplitterDistance = 698
         Me.SplitContainer2.TabIndex = 10
+        '
+        'WindowToolStripMenuItem
+        '
+        Me.WindowToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NewWindowToolStripMenuItem})
+        Me.WindowToolStripMenuItem.Name = "WindowToolStripMenuItem"
+        Me.WindowToolStripMenuItem.Size = New System.Drawing.Size(63, 20)
+        Me.WindowToolStripMenuItem.Text = "Window"
+        '
+        'NewWindowToolStripMenuItem
+        '
+        Me.NewWindowToolStripMenuItem.Name = "NewWindowToolStripMenuItem"
+        Me.NewWindowToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.NewWindowToolStripMenuItem.Text = "New Window"
         '
         'Form1
         '
@@ -448,4 +474,7 @@ Partial Class Form1
     Friend WithEvents CProperty As DataGridViewTextBoxColumn
     Friend WithEvents Value As DataGridViewTextBoxColumn
     Friend WithEvents SplitContainer2 As SplitContainer
+    Friend WithEvents ToolStripMenuItem2 As ToolStripMenuItem
+    Friend WithEvents WindowToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents NewWindowToolStripMenuItem As ToolStripMenuItem
 End Class
