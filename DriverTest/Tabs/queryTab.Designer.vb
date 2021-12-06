@@ -63,6 +63,8 @@ Partial Class queryTab
         '
         'resultView
         '
+        Me.resultView.AllowUserToAddRows = False
+        Me.resultView.AllowUserToDeleteRows = False
         Me.resultView.BorderStyle = System.Windows.Forms.BorderStyle.None
         DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
@@ -84,6 +86,7 @@ Partial Class queryTab
         Me.resultView.Dock = System.Windows.Forms.DockStyle.Fill
         Me.resultView.Location = New System.Drawing.Point(0, 0)
         Me.resultView.Name = "resultView"
+        Me.resultView.ReadOnly = True
         DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control
         DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))

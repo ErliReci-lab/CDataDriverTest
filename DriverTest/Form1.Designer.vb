@@ -272,6 +272,7 @@ Partial Class Form1
         '
         Me.connectionGrid.AllowUserToAddRows = False
         Me.connectionGrid.AllowUserToDeleteRows = False
+        Me.connectionGrid.AllowUserToResizeRows = False
         Me.connectionGrid.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.connectionGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.connectionGrid.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.CProperty, Me.Value})
