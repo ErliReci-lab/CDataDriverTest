@@ -53,7 +53,7 @@ Public Class queryTab
                 Form1.changeStatus(Form1.StatusType.Connection, "Done")
             End If
         Catch ex As Exception
-            MsgBox(ex.Message)
+            UI.errorBox(ex.Message, ex.StackTrace)
             Form1.changeStatus(Form1.StatusType.Query, "Error")
             Form1.changeStatus(Form1.StatusType.Connection, "Error")
         End Try

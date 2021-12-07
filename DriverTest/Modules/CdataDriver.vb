@@ -15,7 +15,7 @@ Module CDataDriver
             End Using
 
         Catch ex As Exception
-            MsgBox(ex.Message)
+            UI.errorBox(ex.Message, ex.StackTrace)
             Form1.changeStatus(Form1.StatusType.Connection, "Testing Failed")
         End Try
     End Sub
@@ -48,7 +48,7 @@ Module CDataDriver
             End Using
 
         Catch ex As Exception
-            MsgBox(ex.Message)
+            UI.errorBox(ex.Message, ex.StackTrace)
             Return Nothing
         End Try
     End Function
