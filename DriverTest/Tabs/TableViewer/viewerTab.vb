@@ -6,6 +6,7 @@
             Dim tableView = New TableComponent(table.Key)
             Me.Controls.Add(tableView)
             tableView.addColumns(table.Value)
+            tableView.Visible = True
         Next
 
     End Sub
