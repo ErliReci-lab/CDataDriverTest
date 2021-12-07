@@ -20,6 +20,39 @@ Module CDataDriver
         End Try
     End Sub
 
+    Public Function getTables(driver As String, connectionString As String) As Dictionary(Of String, List(Of Tuple(Of String, String)))
+        Try
+            Dim factory = DbProviderFactories.GetFactory(driver)
+
+            Using connection As DbConnection = factory.CreateConnection()
+                connection.ConnectionString = connectionString
+                connection.Open()
+                Dim command As DbCommand = factory.CreateCommand()
+                command.CommandText = $"SELECT TableName, ColumnName, DataTypeName FROM sys_tablecolumns"
+                command.Connection = connection
+                Dim adapter As DbDataAdapter = factory.CreateDataAdapter()
+                adapter.SelectCommand = command
+                Dim table As DataTable = New DataTable()
+                adapter.Fill(table)
+
+                Dim results As New Dictionary(Of String, List(Of Tuple(Of String, String)))
+
+                For Each row In table.Rows
+                    Dim tableName As String = row("TableName").ToString()
+                    If Not results.ContainsKey(tableName) Then
+                        results.Add(tableName, New List(Of Tuple(Of String, String)))
+                    End If
+                    results(tableName).Add(Tuple.Create(Of String, String)(row("ColumnName"), row("DataTypeName")))
+                Next
+                Return results
+            End Using
+
+        Catch ex As Exception
+            MsgBox(ex.Message)
+            Return Nothing
+        End Try
+    End Function
+
     Public Function generateConnectionString(driver As String, connectionGrid As DataGridView) As String
         Dim factory = DbProviderFactories.GetFactory(driver)
         Dim connectionField As String = ""

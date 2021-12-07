@@ -1,8 +1,8 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
 Partial Class queryTab
-    Inherits System.Windows.Forms.Form
+    Inherits System.Windows.Forms.UserControl
 
-    'Form overrides dispose to clean up the component list.
+    'UserControl overrides dispose to clean up the component list.
     <System.Diagnostics.DebuggerNonUserCode()> _
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
@@ -49,16 +49,16 @@ Partial Class queryTab
         'SplitContainer1.Panel2
         '
         Me.SplitContainer1.Panel2.Controls.Add(Me.resultView)
-        Me.SplitContainer1.Size = New System.Drawing.Size(800, 450)
-        Me.SplitContainer1.SplitterDistance = 265
-        Me.SplitContainer1.TabIndex = 7
+        Me.SplitContainer1.Size = New System.Drawing.Size(1030, 553)
+        Me.SplitContainer1.SplitterDistance = 341
+        Me.SplitContainer1.TabIndex = 8
         '
         'queryHolder
         '
         Me.queryHolder.Dock = System.Windows.Forms.DockStyle.Fill
         Me.queryHolder.Location = New System.Drawing.Point(0, 0)
         Me.queryHolder.Name = "queryHolder"
-        Me.queryHolder.Size = New System.Drawing.Size(263, 448)
+        Me.queryHolder.Size = New System.Drawing.Size(339, 551)
         Me.queryHolder.TabIndex = 0
         '
         'resultView
@@ -96,18 +96,16 @@ Partial Class queryTab
         DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.resultView.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
         Me.resultView.RowHeadersWidth = 51
-        Me.resultView.Size = New System.Drawing.Size(529, 448)
+        Me.resultView.Size = New System.Drawing.Size(683, 551)
         Me.resultView.TabIndex = 5
         '
         'queryTab
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 450)
         Me.Controls.Add(Me.SplitContainer1)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "queryTab"
-        Me.Text = "queryTab"
+        Me.Size = New System.Drawing.Size(1030, 553)
         Me.SplitContainer1.Panel1.ResumeLayout(False)
         Me.SplitContainer1.Panel2.ResumeLayout(False)
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).EndInit()

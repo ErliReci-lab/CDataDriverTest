@@ -58,4 +58,8 @@ Public Class queryTab
             Form1.changeStatus(Form1.StatusType.Connection, "Error")
         End Try
     End Sub
+
+    Private Sub resultView_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles resultView.CellContentClick
+
+    End Sub
 End Class

@@ -61,6 +61,9 @@ Partial Class Form1
         Me.SystablecolumnsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TablesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ViewsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ViewerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
+        Me.CloseViewerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Panel1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
@@ -332,7 +335,7 @@ Partial Class Form1
         '
         'WindowToolStripMenuItem
         '
-        Me.WindowToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NewWindowToolStripMenuItem, Me.ToolStripSeparator3, Me.NewTabToolStripMenuItem, Me.RemoveTabToolStripMenuItem})
+        Me.WindowToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NewWindowToolStripMenuItem, Me.ToolStripSeparator3, Me.NewTabToolStripMenuItem, Me.RemoveTabToolStripMenuItem, Me.ToolStripSeparator4, Me.ViewerToolStripMenuItem, Me.CloseViewerToolStripMenuItem})
         Me.WindowToolStripMenuItem.Name = "WindowToolStripMenuItem"
         Me.WindowToolStripMenuItem.Size = New System.Drawing.Size(63, 20)
         Me.WindowToolStripMenuItem.Text = "Window"
@@ -377,6 +380,23 @@ Partial Class Form1
         Me.ViewsToolStripMenuItem.Name = "ViewsToolStripMenuItem"
         Me.ViewsToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.ViewsToolStripMenuItem.Text = "Views"
+        '
+        'ViewerToolStripMenuItem
+        '
+        Me.ViewerToolStripMenuItem.Name = "ViewerToolStripMenuItem"
+        Me.ViewerToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.ViewerToolStripMenuItem.Text = "Open Viewer"
+        '
+        'ToolStripSeparator4
+        '
+        Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
+        Me.ToolStripSeparator4.Size = New System.Drawing.Size(177, 6)
+        '
+        'CloseViewerToolStripMenuItem
+        '
+        Me.CloseViewerToolStripMenuItem.Name = "CloseViewerToolStripMenuItem"
+        Me.CloseViewerToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.CloseViewerToolStripMenuItem.Text = "Close Viewer"
         '
         'Form1
         '
@@ -444,4 +464,7 @@ Partial Class Form1
     Friend WithEvents SystablecolumnsToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents TablesToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ViewsToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ViewerToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ToolStripSeparator4 As ToolStripSeparator
+    Friend WithEvents CloseViewerToolStripMenuItem As ToolStripMenuItem
 End Class
