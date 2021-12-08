@@ -42,7 +42,7 @@ Public Class Form1
 #End Region
     Private Sub autoSelect(sender As Object, e As EventArgs)
         Dim table = sender.Tag
-        getSelected().insertQuery($"Select * From ""{table}""")
+        getSelected().insertQuery($"Select * From [{table}];")
     End Sub
 
     Public Sub generateAuto()
@@ -69,9 +69,9 @@ Public Class Form1
                         Dim item = New ToolStripMenuItem($"{name}", Nothing, AddressOf autoSelect)
                         item.Tag = name
                         If type = "VIEW" Then
-                            TablesToolStripMenuItem.DropDownItems.Add(item)
-                        ElseIf type = "TABLE" Then
                             ViewsToolStripMenuItem.DropDownItems.Add(item)
+                        ElseIf type = "TABLE" Then
+                            TablesToolStripMenuItem.DropDownItems.Add(item)
                         End If
                     Next row
 
@@ -121,12 +121,7 @@ Public Class Form1
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         addTab()
-        Dim driversTable = DbProviderFactories.GetFactoryClasses()
-        For Each row In driversTable.Rows
-            If row("Name").ToString().Contains("CData") Then
-                driverField.Items.Add(row("InvariantName"))
-            End If
-        Next
+        'SplitContainer2.Panel2Collapsed = True
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
@@ -153,7 +148,7 @@ Public Class Form1
     End Sub
 
     Private Sub SystablesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SystablesToolStripMenuItem.Click
-        getSelected().insertQuery($"Select * From sys_tables")
+        getSelected().insertQuery($"Select * From sys_tables;")
     End Sub
 
     Private Sub SelectToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles SelectToolStripMenuItem1.Click
@@ -199,10 +194,6 @@ Public Class Form1
         removeTab()
     End Sub
 
-    Private Sub TablesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TablesToolStripMenuItem.Click
-
-    End Sub
-
     Private Sub ViewerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ViewerToolStripMenuItem.Click
         If Not viewerOpened Then
             Dim page = New TabPage($"Viewer")
@@ -216,7 +207,7 @@ Public Class Form1
     End Sub
 
     Private Sub SystablecolumnsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SystablecolumnsToolStripMenuItem.Click
-        getSelected().insertQuery($"Select * From sys_tablecolumns")
+        getSelected().insertQuery($"Select * From sys_tablecolumns;")
     End Sub
 
     Private Sub CloseViewerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CloseViewerToolStripMenuItem.Click
@@ -224,5 +215,19 @@ Public Class Form1
             tabHolder.TabPages.Remove(tabHolder.TabPages($"Viewer"))
             viewerOpened = False
         End If
+    End Sub
+
+    Private Sub driverField_DropDown(sender As Object, e As EventArgs) Handles driverField.DropDown
+        driverField.Items.Clear()
+        Dim driversTable = DbProviderFactories.GetFactoryClasses()
+        For Each row In driversTable.Rows
+            If row("Name").ToString().Contains("CData") Then
+                driverField.Items.Add(row("InvariantName"))
+            End If
+        Next
+    End Sub
+
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        Clipboard.SetText(connectionField.Text)
     End Sub
 End Class

@@ -23,7 +23,7 @@ Public Class queryTab
     End Sub
 
     Public Sub insertQuery(query As String)
-        Me.queryEditor.Text = query
+        Me.queryEditor.Text += query + vbNewLine
     End Sub
 
     Public Sub execute()
@@ -36,18 +36,44 @@ Public Class queryTab
                 Using connection As DbConnection = factory.CreateConnection()
                     connection.ConnectionString = Form1.connectionField.Text
                     connection.Open()
-                    Form1.changeStatus(Form1.StatusType.Query, "Querying ...")
                     Form1.changeStatus(Form1.StatusType.Connection, "Connected")
-                    Dim command As DbCommand = factory.CreateCommand()
-                    command.CommandText = queryEditor.Text
-                    command.Connection = connection
-                    Dim adapter As DbDataAdapter = factory.CreateDataAdapter()
-                    adapter.SelectCommand = command
-                    Dim table As DataTable = New DataTable()
-                    adapter.Fill(table)
-                    Form1.changeStatus(Form1.StatusType.Query, "Filling ...")
-
-                    resultView.DataSource = table
+                    Dim queryToExecute = queryEditor.SelectedText
+                    If queryToExecute Is Nothing Or queryToExecute = "" Or queryToExecute = " " Then
+                        queryToExecute = queryEditor.Text
+                    End If
+                    queryToExecute = queryToExecute.Replace(vbNewLine, "")
+                    Dim queries As String() = queryToExecute.Split(New Char() {";"c}, StringSplitOptions.RemoveEmptyEntries)
+                    Dim nrSelects = queries.Count(Function(x) x.ToLower().Contains("select"))
+                    resultViewHolder.Controls.Clear()
+                    resultViewHolder.RowStyles.Clear()
+                    resultViewHolder.RowCount = 0
+                    For Each query In queries
+                        If query IsNot Nothing AndAlso query <> "" And query <> " " Then
+                            Form1.changeStatus(Form1.StatusType.Query, "Querying ...")
+                            Dim command As DbCommand = factory.CreateCommand()
+                            command.CommandText = query
+                            command.Connection = connection
+                            If query.ToLower().Contains("select") Then
+                                Dim adapter As DbDataAdapter = factory.CreateDataAdapter()
+                                Dim a = factory.CreateCommandBuilder()
+                                adapter.SelectCommand = command
+                                Dim table As DataTable = New DataTable()
+                                adapter.Fill(table)
+                                Form1.changeStatus(Form1.StatusType.Query, "Filling ...")
+                                resultViewHolder.RowStyles.Add(New RowStyle(SizeType.Percent, 100 / nrSelects))
+                                Dim resultView As New DataGridView()
+                                resultView.Dock = DockStyle.Fill
+                                resultView.DataSource = table
+                                resultView.AllowUserToAddRows = False
+                                resultView.AllowUserToDeleteRows = False
+                                resultView.ReadOnly = True
+                                resultViewHolder.Controls.Add(resultView, 0, resultViewHolder.RowCount)
+                                resultViewHolder.RowCount += 1
+                            Else
+                                command.ExecuteReader()
+                            End If
+                        End If
+                    Next
                     Form1.changeStatus(Form1.StatusType.Query, "Done")
                 End Using
                 Form1.changeStatus(Form1.StatusType.Connection, "Done")
@@ -59,7 +85,7 @@ Public Class queryTab
         End Try
     End Sub
 
-    Private Sub resultView_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles resultView.CellContentClick
+    Private Sub resultView_CellContentClick(sender As Object, e As DataGridViewCellEventArgs)
 
     End Sub
 End Class
