@@ -1,11 +1,11 @@
 ﻿Public Class viewerTab
     Private Sub viewerTab_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Dim allTables As Dictionary(Of String, List(Of Tuple(Of String, String))) = CDataDriver.getTables(Form1.driverField.Text, Form1.connectionField.Text)
+        Dim allTables As Dictionary(Of String, CDataObject) = CDataDriver.getTables(Form1.driverField.Text, Form1.connectionField.Text)
 
-        For Each table As KeyValuePair(Of String, List(Of Tuple(Of String, String))) In allTables
-            Dim tableView = New TableComponent(table.Key)
+        For Each table As KeyValuePair(Of String, CDataObject) In allTables
+            Dim tableView = New TableComponent($"{table.Value.name()} ({table.Value.type()})")
             Me.Controls.Add(tableView)
-            tableView.addColumns(table.Value)
+            tableView.addColumns(table.Value.getColumns())
             tableView.Visible = True
         Next
 

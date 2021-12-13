@@ -6,9 +6,9 @@
         Me.Text = name
     End Sub
 
-    Public Sub addColumns(cols As List(Of Tuple(Of String, String)))
-        For Each col In cols
-            DataGridView1.Rows.Add(New String() {col.Item1, col.Item2})
+    Public Sub addColumns(columns As Dictionary(Of String, CDataColumn))
+        For Each col As KeyValuePair(Of String, CDataColumn) In columns
+            DataGridView1.Rows.Add(New String() {col.Value.name(), col.Value.dataType()})
         Next
     End Sub
 
