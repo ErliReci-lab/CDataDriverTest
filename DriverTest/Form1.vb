@@ -121,6 +121,7 @@ Public Class Form1
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         addTab()
+        ToolStripMenuItem3.Checked = My.Settings.FromatExecute
         'SplitContainer2.Panel2Collapsed = True
     End Sub
 
@@ -232,5 +233,14 @@ Public Class Form1
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
         Clipboard.SetText(connectionField.Text)
+    End Sub
+
+    Private Sub ToolStripMenuItem2_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem2.Click
+        getSelected().format()
+    End Sub
+
+    Private Sub ToolStripMenuItem3_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem3.Click
+        My.Settings.FromatExecute = ToolStripMenuItem3.Checked
+        My.Settings.Save()
     End Sub
 End Class

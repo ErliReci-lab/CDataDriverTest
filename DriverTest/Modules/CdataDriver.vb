@@ -42,6 +42,7 @@ Public Class CDataObject
     Private _name As String = ""
     Private _type As String = ""
     Private _columns As New Dictionary(Of String, CDataColumn)
+    Private _colNameCount As Integer = 2
 
     Public Sub New(name As String, type As String)
         Me._name = name
@@ -53,7 +54,12 @@ Public Class CDataObject
     End Sub
 
     Public Sub addRow(col As CDataColumn)
-        _columns.Add(col.name(), col)
+        If _columns.ContainsKey(col.name()) Then
+            _columns.Add(col.name() & _colNameCount.ToString(), col)
+            _colNameCount += 1
+        Else
+            _columns.Add(col.name(), col)
+        End If
     End Sub
 
     Public Function name() As String

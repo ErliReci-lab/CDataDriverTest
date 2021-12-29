@@ -51,6 +51,9 @@
     <Reference Include="FastColoredTextBox, Version=2.16.24.0, Culture=neutral, PublicKeyToken=fb8aa12b994ef61b, processorArchitecture=MSIL">
       <HintPath>..\packages\FCTB.2.16.24\lib\FastColoredTextBox.dll</HintPath>
     </Reference>
+    <Reference Include="PoorMansTSqlFormatterLib35, Version=1.4.3.22897, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\PoorMansTSQLFormatter.1.4.3.1\lib\net35\PoorMansTSqlFormatterLib35.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />

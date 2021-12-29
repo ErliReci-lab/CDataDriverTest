@@ -1,8 +1,10 @@
 ﻿Imports System.Data.Common
+Imports PoorMansTSqlFormatterLib
 Imports FastColoredTextBoxNS
 
 Public Class queryTab
     Private queryEditor As FastColoredTextBox
+    Private sqlFormatter As SqlFormattingManager = Nothing
 
     Private Sub queryTab_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.queryEditor = New FastColoredTextBox()
@@ -26,10 +28,20 @@ Public Class queryTab
         Me.queryEditor.Text += query + vbNewLine
     End Sub
 
+    Public Sub format()
+        If sqlFormatter Is Nothing Then
+            sqlFormatter = New SqlFormattingManager(New Formatters.TSqlStandardFormatter())
+        End If
+        queryEditor.Text = sqlFormatter.Format(queryEditor.Text)
+    End Sub
+
     Public Sub execute()
         Try
             Form1.generateAuto()
-            If queryEditor.Text <> "" And queryEditor.Text <> " " Then
+            If queryEditor.Text.Trim() <> "" Then
+                If My.Settings.FromatExecute Then
+                    format()
+                End If
                 Dim factory = DbProviderFactories.GetFactory(Form1.driverField.Text)
                 Form1.changeStatus(Form1.StatusType.Query, "Conecting ...")
                 Form1.changeStatus(Form1.StatusType.Connection, "Conecting ...")
