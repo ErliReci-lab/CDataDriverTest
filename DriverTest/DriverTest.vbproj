@@ -51,6 +51,9 @@
     <Reference Include="FastColoredTextBox, Version=2.16.24.0, Culture=neutral, PublicKeyToken=fb8aa12b994ef61b, processorArchitecture=MSIL">
       <HintPath>..\packages\FCTB.2.16.24\lib\FastColoredTextBox.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="PoorMansTSqlFormatterLib35, Version=1.4.3.22897, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\PoorMansTSQLFormatter.1.4.3.1\lib\net35\PoorMansTSqlFormatterLib35.dll</HintPath>
     </Reference>
@@ -103,6 +106,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Tabs\ConnectionHistory\conHistoryTab.Designer.vb">
+      <DependentUpon>conHistoryTab.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Tabs\ConnectionHistory\conHistoryTab.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Tabs\QueryTab\queryTab.Designer.vb">
       <DependentUpon>queryTab.vb</DependentUpon>
     </Compile>
@@ -131,6 +140,9 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tabs\ConnectionHistory\conHistoryTab.resx">
+      <DependentUpon>conHistoryTab.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tabs\QueryTab\queryTab.resx">
       <DependentUpon>queryTab.vb</DependentUpon>

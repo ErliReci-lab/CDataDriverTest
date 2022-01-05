@@ -1,4 +1,5 @@
 ﻿Imports System.Data.Common
+Imports Newtonsoft.Json.Linq
 
 Public Class CDataColumn
     Private _name As String = ""
@@ -77,7 +78,7 @@ End Class
 
 Module CDataDriver
 
-    Public Sub testConnection(driver As String, connectionString As String)
+    Public Function testConnection(driver As String, connectionString As String) As Boolean
         Form1.changeStatus(Form1.StatusType.Connection, "Testing ...")
         Try
             Dim factory = DbProviderFactories.GetFactory(driver)
@@ -85,16 +86,29 @@ Module CDataDriver
             Using connection As DbConnection = factory.CreateConnection()
                 connection.ConnectionString = connectionString
                 connection.Open()
-                Form1.changeStatus(Form1.StatusType.Connection, "Testing Successful")
 
+                Dim command As DbCommand = factory.CreateCommand()
+                command.CommandText = $"Select * From sys_tables"
+                command.Connection = connection
+                command.ExecuteReader()
+
+                Form1.changeStatus(Form1.StatusType.Connection, "Testing Successful")
                 MsgBox("Connection Successful")
+                If connectionString.Trim() <> "" And Not driver.Contains("csv") And Not driver.Contains("json") Then
+                    Dim ConnectionHistory = JToken.Parse(My.Settings.ConnectionHistory)
+                    ConnectionHistory(driver) = connectionString
+                    My.Settings.ConnectionHistory = ConnectionHistory.ToString()
+                    My.Settings.Save()
+                End If
             End Using
 
+            Return True
         Catch ex As Exception
             UI.errorBox(ex.Message, ex.StackTrace)
             Form1.changeStatus(Form1.StatusType.Connection, "Testing Failed")
+            Return False
         End Try
-    End Sub
+    End Function
 
     Public Function getTables(driver As String, connectionString As String) As Dictionary(Of String, CDataObject)
         Try

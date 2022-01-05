@@ -38,6 +38,9 @@ Partial Class Form1
         Me.AddProxyToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.QueryToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator5 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem3 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.SelectToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.SystablesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -65,9 +68,7 @@ Partial Class Form1
         Me.Value = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.SplitContainer2 = New System.Windows.Forms.SplitContainer()
         Me.tabHolder = New System.Windows.Forms.TabControl()
-        Me.ToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripSeparator5 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ToolStripMenuItem3 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ConnectionHistoryToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Panel1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
@@ -223,43 +224,61 @@ Partial Class Form1
         'ToolStripMenuItem1
         '
         Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(224, 26)
+        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(215, 26)
         Me.ToolStripMenuItem1.Text = "Execute"
+        '
+        'ToolStripSeparator5
+        '
+        Me.ToolStripSeparator5.Name = "ToolStripSeparator5"
+        Me.ToolStripSeparator5.Size = New System.Drawing.Size(212, 6)
+        '
+        'ToolStripMenuItem2
+        '
+        Me.ToolStripMenuItem2.Name = "ToolStripMenuItem2"
+        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(215, 26)
+        Me.ToolStripMenuItem2.Text = "Format"
+        '
+        'ToolStripMenuItem3
+        '
+        Me.ToolStripMenuItem3.CheckOnClick = True
+        Me.ToolStripMenuItem3.Name = "ToolStripMenuItem3"
+        Me.ToolStripMenuItem3.Size = New System.Drawing.Size(215, 26)
+        Me.ToolStripMenuItem3.Text = "Fromat on Execute"
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(221, 6)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(212, 6)
         '
         'SelectToolStripMenuItem1
         '
         Me.SelectToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SystablesToolStripMenuItem, Me.SystablecolumnsToolStripMenuItem, Me.TablesToolStripMenuItem, Me.ViewsToolStripMenuItem})
         Me.SelectToolStripMenuItem1.Name = "SelectToolStripMenuItem1"
-        Me.SelectToolStripMenuItem1.Size = New System.Drawing.Size(224, 26)
+        Me.SelectToolStripMenuItem1.Size = New System.Drawing.Size(215, 26)
         Me.SelectToolStripMenuItem1.Text = "Select"
         '
         'SystablesToolStripMenuItem
         '
         Me.SystablesToolStripMenuItem.Name = "SystablesToolStripMenuItem"
-        Me.SystablesToolStripMenuItem.Size = New System.Drawing.Size(224, 26)
+        Me.SystablesToolStripMenuItem.Size = New System.Drawing.Size(206, 26)
         Me.SystablesToolStripMenuItem.Text = "sys_tables"
         '
         'SystablecolumnsToolStripMenuItem
         '
         Me.SystablecolumnsToolStripMenuItem.Name = "SystablecolumnsToolStripMenuItem"
-        Me.SystablecolumnsToolStripMenuItem.Size = New System.Drawing.Size(224, 26)
+        Me.SystablecolumnsToolStripMenuItem.Size = New System.Drawing.Size(206, 26)
         Me.SystablecolumnsToolStripMenuItem.Text = "sys_tablecolumns"
         '
         'TablesToolStripMenuItem
         '
         Me.TablesToolStripMenuItem.Name = "TablesToolStripMenuItem"
-        Me.TablesToolStripMenuItem.Size = New System.Drawing.Size(224, 26)
+        Me.TablesToolStripMenuItem.Size = New System.Drawing.Size(206, 26)
         Me.TablesToolStripMenuItem.Text = "Tables"
         '
         'ViewsToolStripMenuItem
         '
         Me.ViewsToolStripMenuItem.Name = "ViewsToolStripMenuItem"
-        Me.ViewsToolStripMenuItem.Size = New System.Drawing.Size(224, 26)
+        Me.ViewsToolStripMenuItem.Size = New System.Drawing.Size(206, 26)
         Me.ViewsToolStripMenuItem.Text = "Views"
         '
         'ConnectionToolStripMenuItem1
@@ -301,7 +320,7 @@ Partial Class Form1
         '
         'ViewToolStripMenuItem
         '
-        Me.ViewToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ChangeSplitToolStripMenuItem})
+        Me.ViewToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ChangeSplitToolStripMenuItem, Me.ConnectionHistoryToolStripMenuItem})
         Me.ViewToolStripMenuItem.Name = "ViewToolStripMenuItem"
         Me.ViewToolStripMenuItem.Size = New System.Drawing.Size(55, 24)
         Me.ViewToolStripMenuItem.Text = "View"
@@ -425,23 +444,11 @@ Partial Class Form1
         Me.tabHolder.Size = New System.Drawing.Size(929, 456)
         Me.tabHolder.TabIndex = 0
         '
-        'ToolStripMenuItem2
+        'ConnectionHistoryToolStripMenuItem
         '
-        Me.ToolStripMenuItem2.Name = "ToolStripMenuItem2"
-        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(224, 26)
-        Me.ToolStripMenuItem2.Text = "Format"
-        '
-        'ToolStripSeparator5
-        '
-        Me.ToolStripSeparator5.Name = "ToolStripSeparator5"
-        Me.ToolStripSeparator5.Size = New System.Drawing.Size(221, 6)
-        '
-        'ToolStripMenuItem3
-        '
-        Me.ToolStripMenuItem3.CheckOnClick = True
-        Me.ToolStripMenuItem3.Name = "ToolStripMenuItem3"
-        Me.ToolStripMenuItem3.Size = New System.Drawing.Size(224, 26)
-        Me.ToolStripMenuItem3.Text = "Fromat on Execute"
+        Me.ConnectionHistoryToolStripMenuItem.Name = "ConnectionHistoryToolStripMenuItem"
+        Me.ConnectionHistoryToolStripMenuItem.Size = New System.Drawing.Size(224, 26)
+        Me.ConnectionHistoryToolStripMenuItem.Text = "Connection History"
         '
         'Form1
         '
@@ -517,4 +524,5 @@ Partial Class Form1
     Friend WithEvents ToolStripMenuItem2 As ToolStripMenuItem
     Friend WithEvents ToolStripSeparator5 As ToolStripSeparator
     Friend WithEvents ToolStripMenuItem3 As ToolStripMenuItem
+    Friend WithEvents ConnectionHistoryToolStripMenuItem As ToolStripMenuItem
 End Class
