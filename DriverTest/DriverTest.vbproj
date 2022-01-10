@@ -170,5 +170,14 @@
   <ItemGroup>
     <Folder Include="Components\" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\closeTab.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IICDM.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\addTab.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

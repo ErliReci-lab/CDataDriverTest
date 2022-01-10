@@ -40,7 +40,7 @@ Public Class queryTab
             Form1.generateAuto()
             If queryEditor.Text.Trim() <> "" Then
                 If My.Settings.FromatExecute Then
-                    format()
+                    'format()
                 End If
                 Dim factory = DbProviderFactories.GetFactory(Form1.driverField.Text)
                 Form1.changeStatus(Form1.StatusType.Query, "Conecting ...")
