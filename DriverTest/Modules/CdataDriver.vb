@@ -150,9 +150,11 @@ Module CDataDriver
         For index = 0 To connectionGrid.Rows.Count - 1
             Dim key = connectionGrid.Rows(index).Cells(0).Value
             Dim val = connectionGrid.Rows(index).Cells(1).Value
-            If val IsNot Nothing And val <> "" And val <> " " Then
-                If val.ToString() <> factory.CreateConnectionStringBuilder().Item(key).ToString() Then
-                    connectionField += $"{key}={val};"
+            If val IsNot Nothing And Not IsDBNull(val) AndAlso (val <> "" And val <> " ") Then
+                If factory.CreateConnectionStringBuilder()(key) IsNot Nothing Then
+                    If val.ToString().ToLower() <> factory.CreateConnectionStringBuilder()(key).ToString().ToLower() Then
+                        connectionField += $"{key}={val};"
+                    End If
                 End If
             End If
         Next

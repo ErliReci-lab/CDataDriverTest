@@ -67,13 +67,11 @@ Partial Class Form1
         Me.FullDBToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TablesToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ViewsToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.connectionGrid = New System.Windows.Forms.DataGridView()
-        Me.CProperty = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Value = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.SplitContainer2 = New System.Windows.Forms.SplitContainer()
-        Me.tabHolder = New System.Windows.Forms.TabControl()
         Me.ToolStripSeparator6 = New System.Windows.Forms.ToolStripSeparator()
         Me.CloseToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.connectionGrid = New System.Windows.Forms.DataGridView()
+        Me.SplitContainer2 = New System.Windows.Forms.SplitContainer()
+        Me.tabHolder = New System.Windows.Forms.TabControl()
         Me.Panel1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
@@ -87,7 +85,7 @@ Partial Class Form1
         'Button1
         '
         Me.Button1.Location = New System.Drawing.Point(16, 47)
-        Me.Button1.Margin = New System.Windows.Forms.Padding(4)
+        Me.Button1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(163, 28)
         Me.Button1.TabIndex = 0
@@ -105,7 +103,7 @@ Partial Class Form1
         Me.Panel1.Controls.Add(Me.Button1)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.Location = New System.Drawing.Point(0, 28)
-        Me.Panel1.Margin = New System.Windows.Forms.Padding(4)
+        Me.Panel1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(1235, 82)
         Me.Panel1.TabIndex = 2
@@ -113,7 +111,7 @@ Partial Class Form1
         'Button3
         '
         Me.Button3.Location = New System.Drawing.Point(364, 47)
-        Me.Button3.Margin = New System.Windows.Forms.Padding(4)
+        Me.Button3.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(73, 28)
         Me.Button3.TabIndex = 8
@@ -123,7 +121,7 @@ Partial Class Form1
         'connectionField
         '
         Me.connectionField.Location = New System.Drawing.Point(445, 6)
-        Me.connectionField.Margin = New System.Windows.Forms.Padding(4)
+        Me.connectionField.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.connectionField.Multiline = True
         Me.connectionField.Name = "connectionField"
         Me.connectionField.Size = New System.Drawing.Size(617, 70)
@@ -132,7 +130,7 @@ Partial Class Form1
         'Button2
         '
         Me.Button2.Location = New System.Drawing.Point(187, 47)
-        Me.Button2.Margin = New System.Windows.Forms.Padding(4)
+        Me.Button2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(169, 28)
         Me.Button2.TabIndex = 6
@@ -143,7 +141,7 @@ Partial Class Form1
         '
         Me.driverField.FormattingEnabled = True
         Me.driverField.Location = New System.Drawing.Point(75, 10)
-        Me.driverField.Margin = New System.Windows.Forms.Padding(4)
+        Me.driverField.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.driverField.Name = "driverField"
         Me.driverField.Size = New System.Drawing.Size(280, 24)
         Me.driverField.TabIndex = 5
@@ -364,24 +362,24 @@ Partial Class Form1
         'NewWindowToolStripMenuItem
         '
         Me.NewWindowToolStripMenuItem.Name = "NewWindowToolStripMenuItem"
-        Me.NewWindowToolStripMenuItem.Size = New System.Drawing.Size(224, 26)
+        Me.NewWindowToolStripMenuItem.Size = New System.Drawing.Size(181, 26)
         Me.NewWindowToolStripMenuItem.Text = "New Window"
         '
         'ToolStripSeparator3
         '
         Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
-        Me.ToolStripSeparator3.Size = New System.Drawing.Size(221, 6)
+        Me.ToolStripSeparator3.Size = New System.Drawing.Size(178, 6)
         '
         'NewTabToolStripMenuItem
         '
         Me.NewTabToolStripMenuItem.Name = "NewTabToolStripMenuItem"
-        Me.NewTabToolStripMenuItem.Size = New System.Drawing.Size(224, 26)
+        Me.NewTabToolStripMenuItem.Size = New System.Drawing.Size(181, 26)
         Me.NewTabToolStripMenuItem.Text = "New Tab"
         '
         'RemoveTabToolStripMenuItem
         '
         Me.RemoveTabToolStripMenuItem.Name = "RemoveTabToolStripMenuItem"
-        Me.RemoveTabToolStripMenuItem.Size = New System.Drawing.Size(224, 26)
+        Me.RemoveTabToolStripMenuItem.Size = New System.Drawing.Size(181, 26)
         Me.RemoveTabToolStripMenuItem.Text = "Remove Tab"
         '
         'DBViewerToolStripMenuItem
@@ -394,20 +392,31 @@ Partial Class Form1
         'FullDBToolStripMenuItem
         '
         Me.FullDBToolStripMenuItem.Name = "FullDBToolStripMenuItem"
-        Me.FullDBToolStripMenuItem.Size = New System.Drawing.Size(224, 26)
+        Me.FullDBToolStripMenuItem.Size = New System.Drawing.Size(139, 26)
         Me.FullDBToolStripMenuItem.Text = "Full DB"
         '
         'TablesToolStripMenuItem1
         '
         Me.TablesToolStripMenuItem1.Name = "TablesToolStripMenuItem1"
-        Me.TablesToolStripMenuItem1.Size = New System.Drawing.Size(224, 26)
+        Me.TablesToolStripMenuItem1.Size = New System.Drawing.Size(139, 26)
         Me.TablesToolStripMenuItem1.Text = "Tables"
         '
         'ViewsToolStripMenuItem1
         '
         Me.ViewsToolStripMenuItem1.Name = "ViewsToolStripMenuItem1"
-        Me.ViewsToolStripMenuItem1.Size = New System.Drawing.Size(224, 26)
+        Me.ViewsToolStripMenuItem1.Size = New System.Drawing.Size(139, 26)
         Me.ViewsToolStripMenuItem1.Text = "Views"
+        '
+        'ToolStripSeparator6
+        '
+        Me.ToolStripSeparator6.Name = "ToolStripSeparator6"
+        Me.ToolStripSeparator6.Size = New System.Drawing.Size(136, 6)
+        '
+        'CloseToolStripMenuItem
+        '
+        Me.CloseToolStripMenuItem.Name = "CloseToolStripMenuItem"
+        Me.CloseToolStripMenuItem.Size = New System.Drawing.Size(139, 26)
+        Me.CloseToolStripMenuItem.Text = "Close"
         '
         'connectionGrid
         '
@@ -416,41 +425,22 @@ Partial Class Form1
         Me.connectionGrid.AllowUserToResizeRows = False
         Me.connectionGrid.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.connectionGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.connectionGrid.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.CProperty, Me.Value})
         Me.connectionGrid.Dock = System.Windows.Forms.DockStyle.Fill
         Me.connectionGrid.Location = New System.Drawing.Point(0, 0)
-        Me.connectionGrid.Margin = New System.Windows.Forms.Padding(4)
+        Me.connectionGrid.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.connectionGrid.MultiSelect = False
         Me.connectionGrid.Name = "connectionGrid"
         Me.connectionGrid.RowHeadersVisible = False
         Me.connectionGrid.RowHeadersWidth = 51
-        Me.connectionGrid.Size = New System.Drawing.Size(297, 456)
+        Me.connectionGrid.Size = New System.Drawing.Size(298, 456)
         Me.connectionGrid.TabIndex = 9
-        '
-        'CProperty
-        '
-        Me.CProperty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
-        Me.CProperty.FillWeight = 50.0!
-        Me.CProperty.HeaderText = "Property"
-        Me.CProperty.MinimumWidth = 6
-        Me.CProperty.Name = "CProperty"
-        Me.CProperty.ReadOnly = True
-        Me.CProperty.Width = 91
-        '
-        'Value
-        '
-        Me.Value.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.Value.FillWeight = 50.0!
-        Me.Value.HeaderText = "Value"
-        Me.Value.MinimumWidth = 6
-        Me.Value.Name = "Value"
         '
         'SplitContainer2
         '
         Me.SplitContainer2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.SplitContainer2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.SplitContainer2.Location = New System.Drawing.Point(0, 110)
-        Me.SplitContainer2.Margin = New System.Windows.Forms.Padding(4)
+        Me.SplitContainer2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.SplitContainer2.Name = "SplitContainer2"
         '
         'SplitContainer2.Panel1
@@ -461,7 +451,7 @@ Partial Class Form1
         '
         Me.SplitContainer2.Panel2.Controls.Add(Me.connectionGrid)
         Me.SplitContainer2.Size = New System.Drawing.Size(1235, 458)
-        Me.SplitContainer2.SplitterDistance = 931
+        Me.SplitContainer2.SplitterDistance = 930
         Me.SplitContainer2.SplitterWidth = 5
         Me.SplitContainer2.TabIndex = 10
         '
@@ -470,22 +460,11 @@ Partial Class Form1
         Me.tabHolder.Dock = System.Windows.Forms.DockStyle.Fill
         Me.tabHolder.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed
         Me.tabHolder.Location = New System.Drawing.Point(0, 0)
-        Me.tabHolder.Margin = New System.Windows.Forms.Padding(4)
+        Me.tabHolder.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.tabHolder.Name = "tabHolder"
         Me.tabHolder.SelectedIndex = 0
-        Me.tabHolder.Size = New System.Drawing.Size(929, 456)
+        Me.tabHolder.Size = New System.Drawing.Size(928, 456)
         Me.tabHolder.TabIndex = 0
-        '
-        'ToolStripSeparator6
-        '
-        Me.ToolStripSeparator6.Name = "ToolStripSeparator6"
-        Me.ToolStripSeparator6.Size = New System.Drawing.Size(221, 6)
-        '
-        'CloseToolStripMenuItem
-        '
-        Me.CloseToolStripMenuItem.Name = "CloseToolStripMenuItem"
-        Me.CloseToolStripMenuItem.Size = New System.Drawing.Size(224, 26)
-        Me.CloseToolStripMenuItem.Text = "Close"
         '
         'Form1
         '
@@ -496,7 +475,7 @@ Partial Class Form1
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.MenuStrip1)
-        Me.Margin = New System.Windows.Forms.Padding(4)
+        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Name = "Form1"
         Me.Text = "Driver Test"
         Me.Panel1.ResumeLayout(False)
@@ -541,8 +520,6 @@ Partial Class Form1
     Friend WithEvents REFRESHToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents connectionStatus As ToolStripStatusLabel
     Friend WithEvents connectionGrid As DataGridView
-    Friend WithEvents CProperty As DataGridViewTextBoxColumn
-    Friend WithEvents Value As DataGridViewTextBoxColumn
     Friend WithEvents SplitContainer2 As SplitContainer
     Friend WithEvents Panel1 As Panel
     Friend WithEvents tabHolder As TabControl

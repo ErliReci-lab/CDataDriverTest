@@ -56,11 +56,16 @@ Public Class queryTab
                     queryToExecute = queryToExecute.Replace(vbNewLine, "")
                     Dim queries As String() = queryToExecute.Split(New Char() {";"c}, StringSplitOptions.RemoveEmptyEntries)
                     Dim nrSelects = queries.Count(Function(x) x.ToLower().Contains("select"))
+                    Dim nrNoSelects = queries.Count(Function(x) Not x.ToLower().Contains("select"))
+                    Dim resultNoSelects = New List(Of String())
+                    If nrNoSelects > 0 Then
+                        nrSelects += 1
+                    End If
                     resultViewHolder.Controls.Clear()
                     resultViewHolder.RowStyles.Clear()
                     resultViewHolder.RowCount = 0
                     For Each query In queries
-                        If query IsNot Nothing AndAlso query <> "" And query <> " " Then
+                        If query IsNot Nothing AndAlso (query <> "" And query <> " ") Then
                             Form1.changeStatus(Form1.StatusType.Query, "Querying ...")
                             Dim command As DbCommand = factory.CreateCommand()
                             command.CommandText = query
@@ -82,10 +87,32 @@ Public Class queryTab
                                 resultViewHolder.Controls.Add(resultView, 0, resultViewHolder.RowCount)
                                 resultViewHolder.RowCount += 1
                             Else
-                                command.ExecuteReader()
+                                Dim state = command.ExecuteNonQuery().Equals(1)
+                                If state Then
+                                    resultNoSelects.Add(New String() {query, "Successful"})
+                                Else
+                                    resultNoSelects.Add(New String() {query, "Failed"})
+                                End If
                             End If
                         End If
                     Next
+                    If nrNoSelects > 0 Then
+                        Dim table As DataTable = New DataTable()
+                        table.Columns.Add("Query")
+                        table.Columns.Add("Status")
+                        For Each query In resultNoSelects
+                            table.Rows.Add(New String() {query(0), query(1)})
+                        Next
+                        resultViewHolder.RowStyles.Add(New RowStyle(SizeType.Percent, 100 / nrSelects))
+                        Dim resultView As New DataGridView()
+                        resultView.Dock = DockStyle.Fill
+                        resultView.DataSource = table
+                        resultView.AllowUserToAddRows = False
+                        resultView.AllowUserToDeleteRows = False
+                        resultView.ReadOnly = True
+                        resultViewHolder.Controls.Add(resultView, 0, resultViewHolder.RowCount)
+                        resultViewHolder.RowCount += 1
+                    End If
                     Form1.changeStatus(Form1.StatusType.Query, "Done")
                 End Using
                 Form1.changeStatus(Form1.StatusType.Connection, "Done")

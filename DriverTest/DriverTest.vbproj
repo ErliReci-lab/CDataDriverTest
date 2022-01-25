@@ -89,6 +89,12 @@
       <DependentUpon>Form1.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\StoredProcedure.Designer.vb">
+      <DependentUpon>StoredProcedure.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\StoredProcedure.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Modules\CdataDriver.vb" />
     <Compile Include="Modules\UI.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -134,6 +140,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\StoredProcedure.resx">
+      <DependentUpon>StoredProcedure.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
