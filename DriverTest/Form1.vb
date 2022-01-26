@@ -322,39 +322,12 @@ Public Class Form1
         connectionField.Text += connectionFieldTemp
     End Sub
 
-    Private Sub NewWindowToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NewWindowToolStripMenuItem.Click
-        Dim newF1 = New Form1()
-        newF1.Show()
-    End Sub
-
     Private Sub NewTabToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NewTabToolStripMenuItem.Click
         addTab()
     End Sub
 
     Private Sub RemoveTabToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RemoveTabToolStripMenuItem.Click
         removeTab()
-    End Sub
-
-    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Me.queryEditor = New FastColoredTextBox()
-        'logView.BackColor = hexToColor("#252526")
-        'logView.ForeColor = Color.White
-        queryEditor.BorderStyle = BorderStyle.None
-        'logView.IndentBackColor = hexToColor("#252526")
-        queryEditor.Dock = System.Windows.Forms.DockStyle.Fill
-        queryEditor.Parent = queryHolder
-        queryEditor.Paddings = New Padding(0)
-        queryEditor.Margin = New Padding(0)
-        queryEditor.BringToFront()
-        queryEditor.Language = Language.SQL
-        SplitContainer1.Orientation = My.Settings.SplitPos
-
-        Dim driversTable = DbProviderFactories.GetFactoryClasses()
-        For Each row In driversTable.Rows
-            If row("Name").ToString().Contains("CData") Then
-                driverField.Items.Add(row("InvariantName"))
-            End If
-        Next
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
@@ -517,10 +490,6 @@ Public Class Form1
         ElseIf e.RowIndex = -1 Then
             e.CellStyle.BackColor = SystemColors.Control
         End If
-    End Sub
-
-    Private Sub ToolStripMenuItem2_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem2.Click
-        queryEditor.Text = $"Select * From sys_tablecolumns"
     End Sub
 
     Private Sub driverField_DropDown(sender As Object, e As EventArgs) Handles driverField.DropDown
