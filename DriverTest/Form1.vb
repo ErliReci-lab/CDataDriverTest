@@ -62,7 +62,7 @@ Public Class Form1
 #End Region
     Private Sub autoSelect(sender As Object, e As EventArgs)
         Dim table = sender.Tag
-        getSelected().insertQuery($"Select * From [{table}];")
+        getSelected().insertQuery($"Select * From [{table}] LIMIT 10;")
     End Sub
 
     Private Sub generateView(sender As Object, e As EventArgs)
@@ -92,7 +92,7 @@ Public Class Form1
                     connection.Open()
 
                     Dim command As DbCommand = factory.CreateCommand()
-                    command.CommandText = $"Select * From sys_tables"
+                    command.CommandText = $"Select * From sys_tables LIMIT 10;"
                     command.Connection = connection
                     Dim adapter As DbDataAdapter = factory.CreateDataAdapter()
                     adapter.SelectCommand = command
@@ -189,7 +189,7 @@ Public Class Form1
     End Sub
 
     Private Sub SystablesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SystablesToolStripMenuItem.Click
-        getSelected().insertQuery($"Select * From [sys_tables];")
+        getSelected().insertQuery($"Select * From [sys_tables] LIMIT 10;")
     End Sub
 
     Private Sub SelectToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles SelectToolStripMenuItem1.Click
@@ -336,7 +336,7 @@ Public Class Form1
     End Sub
 
     Private Sub SystablecolumnsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SystablecolumnsToolStripMenuItem.Click
-        getSelected().insertQuery($"Select * From [sys_tablecolumns];")
+        getSelected().insertQuery($"Select * From [sys_tablecolumns] LIMIT 10;")
     End Sub
 
     Private Sub driverField_DropDown(sender As Object, e As EventArgs) Handles driverField.DropDown
