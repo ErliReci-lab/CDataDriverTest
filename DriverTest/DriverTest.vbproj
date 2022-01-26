@@ -79,6 +79,12 @@
     <Reference Include="FastColoredTextBox, Version=2.16.24.0, Culture=neutral, PublicKeyToken=fb8aa12b994ef61b, processorArchitecture=MSIL">
       <HintPath>..\packages\FCTB.2.16.24\lib\FastColoredTextBox.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PoorMansTSqlFormatterLib35, Version=1.4.3.22897, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\PoorMansTSQLFormatter.1.4.3.1\lib\net35\PoorMansTSqlFormatterLib35.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
@@ -111,6 +117,14 @@
       <DependentUpon>Form1.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\StoredProcedure.Designer.vb">
+      <DependentUpon>StoredProcedure.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\StoredProcedure.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\CdataDriver.vb" />
+    <Compile Include="Modules\UI.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -126,16 +140,55 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Tabs\ConnectionHistory\conHistoryTab.Designer.vb">
+      <DependentUpon>conHistoryTab.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Tabs\ConnectionHistory\conHistoryTab.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Tabs\QueryTab\queryTab.Designer.vb">
+      <DependentUpon>queryTab.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Tabs\QueryTab\queryTab.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Tabs\TableViewer\Components\TableComponent.Designer.vb">
+      <DependentUpon>TableComponent.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Tabs\TableViewer\Components\TableComponent.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tabs\TableViewer\viewerTab.Designer.vb">
+      <DependentUpon>viewerTab.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Tabs\TableViewer\viewerTab.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\StoredProcedure.resx">
+      <DependentUpon>StoredProcedure.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tabs\ConnectionHistory\conHistoryTab.resx">
+      <DependentUpon>conHistoryTab.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tabs\QueryTab\queryTab.resx">
+      <DependentUpon>queryTab.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tabs\TableViewer\Components\TableComponent.resx">
+      <DependentUpon>TableComponent.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tabs\TableViewer\viewerTab.resx">
+      <DependentUpon>viewerTab.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -153,16 +206,16 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
-      <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 and x64%29</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
+    <Folder Include="Components\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\closeTab.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IICDM.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\addTab.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

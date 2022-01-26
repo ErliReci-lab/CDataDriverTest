@@ -65,6 +65,30 @@ Namespace My
                 Me("SplitPos") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property FromatExecute() As Boolean
+            Get
+                Return CType(Me("FromatExecute"),Boolean)
+            End Get
+            Set
+                Me("FromatExecute") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("{}")>  _
+        Public Property ConnectionHistory() As String
+            Get
+                Return CType(Me("ConnectionHistory"),String)
+            End Get
+            Set
+                Me("ConnectionHistory") = value
+            End Set
+        End Property
     End Class
 End Namespace
 
