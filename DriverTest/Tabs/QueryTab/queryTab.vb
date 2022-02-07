@@ -24,6 +24,10 @@ Public Class queryTab
         My.Settings.Save()
     End Sub
 
+    Public Function getQuery() As String
+        Return queryEditor.Text
+    End Function
+
     Public Sub insertQuery(query As String)
         Me.queryEditor.Text += query + vbNewLine
     End Sub
@@ -37,11 +41,12 @@ Public Class queryTab
 
     Public Sub execute()
         Try
-            Form1.generateAuto()
+            'Form1.generateAuto()
             If queryEditor.Text.Trim() <> "" Then
                 If My.Settings.FromatExecute Then
                     'format()
                 End If
+                Dim t = New With {.val = 0}
                 Dim factory = DbProviderFactories.GetFactory(Form1.driverField.Text)
                 Form1.changeStatus(Form1.StatusType.Query, "Conecting ...")
                 Form1.changeStatus(Form1.StatusType.Connection, "Conecting ...")
@@ -87,8 +92,8 @@ Public Class queryTab
                                 resultViewHolder.Controls.Add(resultView, 0, resultViewHolder.RowCount)
                                 resultViewHolder.RowCount += 1
                             Else
-                                Dim state = command.ExecuteNonQuery().Equals(1)
-                                If state Then
+                                Dim state = command.ExecuteScalar()
+                                If state IsNot Nothing Then
                                     resultNoSelects.Add(New String() {query, "Successful"})
                                 Else
                                     resultNoSelects.Add(New String() {query, "Failed"})
@@ -125,6 +130,10 @@ Public Class queryTab
     End Sub
 
     Private Sub resultView_CellContentClick(sender As Object, e As DataGridViewCellEventArgs)
+
+    End Sub
+
+    Private Sub resultViewHolder_Paint(sender As Object, e As PaintEventArgs) Handles resultViewHolder.Paint
 
     End Sub
 End Class

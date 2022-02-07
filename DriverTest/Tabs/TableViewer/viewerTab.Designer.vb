@@ -26,11 +26,13 @@ Partial Class viewerTab
         '
         'viewerTab
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.BackColor = System.Drawing.Color.White
+        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Name = "viewerTab"
-        Me.Size = New System.Drawing.Size(781, 472)
+        Me.Size = New System.Drawing.Size(615, 378)
         Me.ResumeLayout(False)
 
     End Sub

@@ -39,6 +39,9 @@ Partial Class Form1
         Me.AddLogVerbosity3ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AddLogVerbosity5ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.QueryToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem4 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem5 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator5 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
@@ -58,6 +61,8 @@ Partial Class Form1
         Me.ViewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ChangeSplitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ConnectionHistoryToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator7 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripMenuItem6 = New System.Windows.Forms.ToolStripMenuItem()
         Me.WindowToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.NewWindowToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
@@ -72,6 +77,9 @@ Partial Class Form1
         Me.connectionGrid = New System.Windows.Forms.DataGridView()
         Me.SplitContainer2 = New System.Windows.Forms.SplitContainer()
         Me.tabHolder = New System.Windows.Forms.TabControl()
+        Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
+        Me.SaveFileDialog1 = New System.Windows.Forms.SaveFileDialog()
+        Me.StoredProcedureToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Panel1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
@@ -85,7 +93,7 @@ Partial Class Form1
         'Button1
         '
         Me.Button1.Location = New System.Drawing.Point(16, 47)
-        Me.Button1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Button1.Margin = New System.Windows.Forms.Padding(4)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(163, 28)
         Me.Button1.TabIndex = 0
@@ -103,7 +111,7 @@ Partial Class Form1
         Me.Panel1.Controls.Add(Me.Button1)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.Location = New System.Drawing.Point(0, 28)
-        Me.Panel1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Panel1.Margin = New System.Windows.Forms.Padding(4)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(1235, 82)
         Me.Panel1.TabIndex = 2
@@ -111,7 +119,7 @@ Partial Class Form1
         'Button3
         '
         Me.Button3.Location = New System.Drawing.Point(364, 47)
-        Me.Button3.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Button3.Margin = New System.Windows.Forms.Padding(4)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(73, 28)
         Me.Button3.TabIndex = 8
@@ -121,7 +129,7 @@ Partial Class Form1
         'connectionField
         '
         Me.connectionField.Location = New System.Drawing.Point(445, 6)
-        Me.connectionField.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.connectionField.Margin = New System.Windows.Forms.Padding(4)
         Me.connectionField.Multiline = True
         Me.connectionField.Name = "connectionField"
         Me.connectionField.Size = New System.Drawing.Size(617, 70)
@@ -130,7 +138,7 @@ Partial Class Form1
         'Button2
         '
         Me.Button2.Location = New System.Drawing.Point(187, 47)
-        Me.Button2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Button2.Margin = New System.Windows.Forms.Padding(4)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(169, 28)
         Me.Button2.TabIndex = 6
@@ -141,7 +149,7 @@ Partial Class Form1
         '
         Me.driverField.FormattingEnabled = True
         Me.driverField.Location = New System.Drawing.Point(75, 10)
-        Me.driverField.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.driverField.Margin = New System.Windows.Forms.Padding(4)
         Me.driverField.Name = "driverField"
         Me.driverField.Size = New System.Drawing.Size(280, 24)
         Me.driverField.TabIndex = 5
@@ -206,7 +214,7 @@ Partial Class Form1
         '
         'QuickToolStripMenuItem
         '
-        Me.QuickToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AddProxyToolStripMenuItem, Me.AddLogVerbosity3ToolStripMenuItem, Me.AddLogVerbosity5ToolStripMenuItem})
+        Me.QuickToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AddProxyToolStripMenuItem, Me.AddLogVerbosity3ToolStripMenuItem, Me.AddLogVerbosity5ToolStripMenuItem, Me.StoredProcedureToolStripMenuItem})
         Me.QuickToolStripMenuItem.Name = "QuickToolStripMenuItem"
         Me.QuickToolStripMenuItem.Size = New System.Drawing.Size(60, 24)
         Me.QuickToolStripMenuItem.Text = "Quick"
@@ -231,45 +239,62 @@ Partial Class Form1
         '
         'QueryToolStripMenuItem1
         '
-        Me.QueryToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem1, Me.ToolStripSeparator5, Me.ToolStripMenuItem2, Me.ToolStripMenuItem3, Me.ToolStripSeparator1, Me.SelectToolStripMenuItem1})
+        Me.QueryToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem4, Me.ToolStripMenuItem5, Me.ToolStripSeparator4, Me.ToolStripMenuItem1, Me.ToolStripSeparator5, Me.ToolStripMenuItem2, Me.ToolStripMenuItem3, Me.ToolStripSeparator1, Me.SelectToolStripMenuItem1})
         Me.QueryToolStripMenuItem1.Name = "QueryToolStripMenuItem1"
         Me.QueryToolStripMenuItem1.Size = New System.Drawing.Size(62, 24)
         Me.QueryToolStripMenuItem1.Text = "Query"
         '
+        'ToolStripMenuItem4
+        '
+        Me.ToolStripMenuItem4.Name = "ToolStripMenuItem4"
+        Me.ToolStripMenuItem4.Size = New System.Drawing.Size(224, 26)
+        Me.ToolStripMenuItem4.Text = "Save Query"
+        '
+        'ToolStripMenuItem5
+        '
+        Me.ToolStripMenuItem5.Name = "ToolStripMenuItem5"
+        Me.ToolStripMenuItem5.Size = New System.Drawing.Size(224, 26)
+        Me.ToolStripMenuItem5.Text = "Open Query"
+        '
+        'ToolStripSeparator4
+        '
+        Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
+        Me.ToolStripSeparator4.Size = New System.Drawing.Size(221, 6)
+        '
         'ToolStripMenuItem1
         '
         Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(215, 26)
+        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(224, 26)
         Me.ToolStripMenuItem1.Text = "Execute"
         '
         'ToolStripSeparator5
         '
         Me.ToolStripSeparator5.Name = "ToolStripSeparator5"
-        Me.ToolStripSeparator5.Size = New System.Drawing.Size(212, 6)
+        Me.ToolStripSeparator5.Size = New System.Drawing.Size(221, 6)
         '
         'ToolStripMenuItem2
         '
         Me.ToolStripMenuItem2.Name = "ToolStripMenuItem2"
-        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(215, 26)
+        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(224, 26)
         Me.ToolStripMenuItem2.Text = "Format"
         '
         'ToolStripMenuItem3
         '
         Me.ToolStripMenuItem3.CheckOnClick = True
         Me.ToolStripMenuItem3.Name = "ToolStripMenuItem3"
-        Me.ToolStripMenuItem3.Size = New System.Drawing.Size(215, 26)
+        Me.ToolStripMenuItem3.Size = New System.Drawing.Size(224, 26)
         Me.ToolStripMenuItem3.Text = "Fromat on Execute"
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(212, 6)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(221, 6)
         '
         'SelectToolStripMenuItem1
         '
         Me.SelectToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SystablesToolStripMenuItem, Me.SystablecolumnsToolStripMenuItem, Me.TablesToolStripMenuItem, Me.ViewsToolStripMenuItem})
         Me.SelectToolStripMenuItem1.Name = "SelectToolStripMenuItem1"
-        Me.SelectToolStripMenuItem1.Size = New System.Drawing.Size(215, 26)
+        Me.SelectToolStripMenuItem1.Size = New System.Drawing.Size(224, 26)
         Me.SelectToolStripMenuItem1.Text = "Select"
         '
         'SystablesToolStripMenuItem
@@ -306,19 +331,19 @@ Partial Class Form1
         'TestToolStripMenuItem
         '
         Me.TestToolStripMenuItem.Name = "TestToolStripMenuItem"
-        Me.TestToolStripMenuItem.Size = New System.Drawing.Size(169, 26)
+        Me.TestToolStripMenuItem.Size = New System.Drawing.Size(224, 26)
         Me.TestToolStripMenuItem.Text = "Test"
         '
         'ToolStripSeparator2
         '
         Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(166, 6)
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(221, 6)
         '
         'InsertToolStripMenuItem
         '
         Me.InsertToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.GETANDREFRESHToolStripMenuItem, Me.REFRESHToolStripMenuItem})
         Me.InsertToolStripMenuItem.Name = "InsertToolStripMenuItem"
-        Me.InsertToolStripMenuItem.Size = New System.Drawing.Size(169, 26)
+        Me.InsertToolStripMenuItem.Size = New System.Drawing.Size(224, 26)
         Me.InsertToolStripMenuItem.Text = "InitiateAuth"
         '
         'GETANDREFRESHToolStripMenuItem
@@ -335,7 +360,7 @@ Partial Class Form1
         '
         'ViewToolStripMenuItem
         '
-        Me.ViewToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ChangeSplitToolStripMenuItem, Me.ConnectionHistoryToolStripMenuItem})
+        Me.ViewToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ChangeSplitToolStripMenuItem, Me.ConnectionHistoryToolStripMenuItem, Me.ToolStripSeparator7, Me.ToolStripMenuItem6})
         Me.ViewToolStripMenuItem.Name = "ViewToolStripMenuItem"
         Me.ViewToolStripMenuItem.Size = New System.Drawing.Size(55, 24)
         Me.ViewToolStripMenuItem.Text = "View"
@@ -351,6 +376,17 @@ Partial Class Form1
         Me.ConnectionHistoryToolStripMenuItem.Name = "ConnectionHistoryToolStripMenuItem"
         Me.ConnectionHistoryToolStripMenuItem.Size = New System.Drawing.Size(218, 26)
         Me.ConnectionHistoryToolStripMenuItem.Text = "Connection History"
+        '
+        'ToolStripSeparator7
+        '
+        Me.ToolStripSeparator7.Name = "ToolStripSeparator7"
+        Me.ToolStripSeparator7.Size = New System.Drawing.Size(215, 6)
+        '
+        'ToolStripMenuItem6
+        '
+        Me.ToolStripMenuItem6.Name = "ToolStripMenuItem6"
+        Me.ToolStripMenuItem6.Size = New System.Drawing.Size(218, 26)
+        Me.ToolStripMenuItem6.Text = "Data View"
         '
         'WindowToolStripMenuItem
         '
@@ -428,7 +464,7 @@ Partial Class Form1
         Me.connectionGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.connectionGrid.Dock = System.Windows.Forms.DockStyle.Fill
         Me.connectionGrid.Location = New System.Drawing.Point(0, 0)
-        Me.connectionGrid.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.connectionGrid.Margin = New System.Windows.Forms.Padding(4)
         Me.connectionGrid.MultiSelect = False
         Me.connectionGrid.Name = "connectionGrid"
         Me.connectionGrid.RowHeadersVisible = False
@@ -441,7 +477,7 @@ Partial Class Form1
         Me.SplitContainer2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.SplitContainer2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.SplitContainer2.Location = New System.Drawing.Point(0, 110)
-        Me.SplitContainer2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.SplitContainer2.Margin = New System.Windows.Forms.Padding(4)
         Me.SplitContainer2.Name = "SplitContainer2"
         '
         'SplitContainer2.Panel1
@@ -461,11 +497,21 @@ Partial Class Form1
         Me.tabHolder.Dock = System.Windows.Forms.DockStyle.Fill
         Me.tabHolder.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed
         Me.tabHolder.Location = New System.Drawing.Point(0, 0)
-        Me.tabHolder.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.tabHolder.Margin = New System.Windows.Forms.Padding(4)
         Me.tabHolder.Name = "tabHolder"
         Me.tabHolder.SelectedIndex = 0
         Me.tabHolder.Size = New System.Drawing.Size(928, 456)
         Me.tabHolder.TabIndex = 0
+        '
+        'OpenFileDialog1
+        '
+        Me.OpenFileDialog1.FileName = "OpenFileDialog1"
+        '
+        'StoredProcedureToolStripMenuItem
+        '
+        Me.StoredProcedureToolStripMenuItem.Name = "StoredProcedureToolStripMenuItem"
+        Me.StoredProcedureToolStripMenuItem.Size = New System.Drawing.Size(236, 26)
+        Me.StoredProcedureToolStripMenuItem.Text = "Stored Procedure"
         '
         'Form1
         '
@@ -476,7 +522,7 @@ Partial Class Form1
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.MenuStrip1)
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "Form1"
         Me.Text = "Driver Test"
         Me.Panel1.ResumeLayout(False)
@@ -545,4 +591,12 @@ Partial Class Form1
     Friend WithEvents ViewsToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents ToolStripSeparator6 As ToolStripSeparator
     Friend WithEvents CloseToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents OpenFileDialog1 As OpenFileDialog
+    Friend WithEvents ToolStripMenuItem4 As ToolStripMenuItem
+    Friend WithEvents ToolStripMenuItem5 As ToolStripMenuItem
+    Friend WithEvents ToolStripSeparator4 As ToolStripSeparator
+    Friend WithEvents SaveFileDialog1 As SaveFileDialog
+    Friend WithEvents ToolStripSeparator7 As ToolStripSeparator
+    Friend WithEvents ToolStripMenuItem6 As ToolStripMenuItem
+    Friend WithEvents StoredProcedureToolStripMenuItem As ToolStripMenuItem
 End Class

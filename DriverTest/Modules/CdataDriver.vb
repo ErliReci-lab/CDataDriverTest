@@ -76,7 +76,48 @@ Public Class CDataObject
     End Function
 End Class
 
+Public Class CDataDriverClone
+    Private _tables As Dictionary(Of String, CDataObject)
+    Private _procedureTable As DataTable
+    Public columnsFill As Boolean = False
+
+    Public Sub setObjects(cdataObjects As Dictionary(Of String, CDataObject))
+        _tables = cdataObjects
+    End Sub
+
+    Public Function getTableNames() As List(Of String)
+        Return _tables.Keys.ToList()
+    End Function
+
+    Public Function getObjects() As Dictionary(Of String, CDataObject)
+        Return _tables
+    End Function
+
+    Public Sub setProcedure(data As DataTable)
+        _procedureTable = data
+    End Sub
+
+    Public Function getProcedure(procedureNames As String) As DataRow()
+        Dim result() As DataRow = _procedureTable.Select($"ProcedureName = '{procedureNames}'")
+        Return result
+    End Function
+
+    Public Function getProcedureNames() As List(Of String)
+        Dim previous As String = ""
+        Dim result As New List(Of String)
+        For Each row In _procedureTable.Rows
+            If previous <> row("ProcedureName") Then
+                result.Add(row("ProcedureName"))
+                previous = row("ProcedureName")
+            End If
+        Next
+        Return result
+    End Function
+
+End Class
+
 Module CDataDriver
+    Public clone As New CDataDriverClone
 
     Public Function testConnection(driver As String, connectionString As String) As Boolean
         Form1.changeStatus(Form1.StatusType.Connection, "Testing ...")
@@ -100,6 +141,8 @@ Module CDataDriver
                     My.Settings.ConnectionHistory = ConnectionHistory.ToString()
                     My.Settings.Save()
                 End If
+
+                CDataDriver.driverClone(driver, connectionString)
             End Using
 
             Return True
@@ -110,15 +153,16 @@ Module CDataDriver
         End Try
     End Function
 
-    Public Function getTables(driver As String, connectionString As String) As Dictionary(Of String, CDataObject)
+    Public Function driverClone(driver As String, connectionString As String)
         Try
             Dim factory = DbProviderFactories.GetFactory(driver)
 
             Using connection As DbConnection = factory.CreateConnection()
-                connection.ConnectionString = connectionString
+                connection.ConnectionString = connectionString & "Timeout=30;"
                 connection.Open()
                 Dim command As DbCommand = factory.CreateCommand()
-                command.CommandText = $"SELECT * FROM sys_tablecolumns"
+                'command.CommandText = $"SELECT [sys_tablecolumns].*, [sys_tables].TableType FROM [sys_tablecolumns] INNER JOIN [sys_tables] ON [sys_tables].TableName = [sys_tablecolumns].TableName;"
+                command.CommandText = $"SELECT * FROM [sys_tables];"
                 command.Connection = connection
                 Dim adapter As DbDataAdapter = factory.CreateDataAdapter()
                 adapter.SelectCommand = command
@@ -130,12 +174,20 @@ Module CDataDriver
                 For Each row In table.Rows
                     Dim tableName As String = row("TableName").ToString()
                     If Not results.ContainsKey(tableName) Then
-                        results.Add(tableName, New CDataObject(tableName, row("CatalogName")))
+                        results.Add(tableName, New CDataObject(tableName, row("TableType")))
                     End If
-                    Dim newCol As New CDataColumn(row("ColumnName"), row("DataTypeName"))
-                    results(tableName).addRow(newCol)
+                    'Dim newCol As New CDataColumn(row("ColumnName"), row("DataTypeName"))
+                    'results(tableName).addRow(newCol)
                 Next
-                Return results
+                clone.setObjects(results)
+                command.CommandText = "SELECT ProcedureName, ColumnName as Parameter, DataTypeName as DataType, IsRequired, Description, Values FROM sys_procedureparameters"
+                command.Connection = connection
+                Dim adapter1 As DbDataAdapter = factory.CreateDataAdapter()
+                adapter1.SelectCommand = command
+                Dim table1 As DataTable = New DataTable()
+                adapter1.Fill(table1)
+                clone.setProcedure(table1)
+                Return clone
             End Using
 
         Catch ex As Exception

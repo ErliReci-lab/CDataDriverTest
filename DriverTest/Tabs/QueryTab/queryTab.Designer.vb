@@ -36,6 +36,7 @@ Partial Class queryTab
         Me.SplitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.SplitContainer1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.SplitContainer1.Location = New System.Drawing.Point(0, 0)
+        Me.SplitContainer1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.SplitContainer1.Name = "SplitContainer1"
         '
         'SplitContainer1.Panel1
@@ -46,16 +47,18 @@ Partial Class queryTab
         '
         Me.SplitContainer1.Panel2.BackColor = System.Drawing.SystemColors.Control
         Me.SplitContainer1.Panel2.Controls.Add(Me.resultViewHolder)
-        Me.SplitContainer1.Size = New System.Drawing.Size(1030, 553)
-        Me.SplitContainer1.SplitterDistance = 341
+        Me.SplitContainer1.Size = New System.Drawing.Size(1373, 681)
+        Me.SplitContainer1.SplitterDistance = 454
+        Me.SplitContainer1.SplitterWidth = 5
         Me.SplitContainer1.TabIndex = 8
         '
         'queryHolder
         '
         Me.queryHolder.Dock = System.Windows.Forms.DockStyle.Fill
         Me.queryHolder.Location = New System.Drawing.Point(0, 0)
+        Me.queryHolder.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.queryHolder.Name = "queryHolder"
-        Me.queryHolder.Size = New System.Drawing.Size(339, 551)
+        Me.queryHolder.Size = New System.Drawing.Size(452, 679)
         Me.queryHolder.TabIndex = 0
         '
         'resultViewHolder
@@ -64,19 +67,21 @@ Partial Class queryTab
         Me.resultViewHolder.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.resultViewHolder.Dock = System.Windows.Forms.DockStyle.Fill
         Me.resultViewHolder.Location = New System.Drawing.Point(0, 0)
+        Me.resultViewHolder.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.resultViewHolder.Name = "resultViewHolder"
         Me.resultViewHolder.RowCount = 1
         Me.resultViewHolder.RowStyles.Add(New System.Windows.Forms.RowStyle())
-        Me.resultViewHolder.Size = New System.Drawing.Size(683, 551)
+        Me.resultViewHolder.Size = New System.Drawing.Size(912, 679)
         Me.resultViewHolder.TabIndex = 0
         '
         'queryTab
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.Controls.Add(Me.SplitContainer1)
+        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Name = "queryTab"
-        Me.Size = New System.Drawing.Size(1030, 553)
+        Me.Size = New System.Drawing.Size(1373, 681)
         Me.SplitContainer1.Panel1.ResumeLayout(False)
         Me.SplitContainer1.Panel2.ResumeLayout(False)
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).EndInit()

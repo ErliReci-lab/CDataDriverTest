@@ -146,6 +146,12 @@
     <Compile Include="Tabs\ConnectionHistory\conHistoryTab.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Tabs\DataViewTab\dataTab.Designer.vb">
+      <DependentUpon>dataTab.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Tabs\DataViewTab\dataTab.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Tabs\QueryTab\queryTab.Designer.vb">
       <DependentUpon>queryTab.vb</DependentUpon>
     </Compile>
@@ -180,6 +186,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Tabs\ConnectionHistory\conHistoryTab.resx">
       <DependentUpon>conHistoryTab.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tabs\DataViewTab\dataTab.resx">
+      <DependentUpon>dataTab.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tabs\QueryTab\queryTab.resx">
       <DependentUpon>queryTab.vb</DependentUpon>
