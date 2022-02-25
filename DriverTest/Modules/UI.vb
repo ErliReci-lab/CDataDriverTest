@@ -3,6 +3,7 @@
         Dim dialogTypeName = "System.Windows.Forms.PropertyGridInternal.GridErrorDlg"
         Dim dialogType = GetType(Form).Assembly.[GetType](dialogTypeName)
         Dim dialog = CType(Activator.CreateInstance(dialogType, New PropertyGrid()), Form)
+        dialog.Width = 500
         dialog.Text = "Error"
         dialogType.GetProperty("Details").SetValue(dialog, details, Nothing)
         dialogType.GetProperty("Message").SetValue(dialog, message, Nothing)

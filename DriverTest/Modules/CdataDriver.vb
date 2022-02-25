@@ -76,13 +76,51 @@ Public Class CDataObject
     End Function
 End Class
 
+Public Class CDataConnectionProperty
+    Private _index As Integer
+    Private _default As String
+
+    Public Sub New(index As Integer, defaultValue As String)
+        Me._index = index
+        Me._default = defaultValue
+    End Sub
+
+    Public Function getIndex() As Integer
+        Return Me._index
+    End Function
+
+    Public Function getValue() As String
+        Return Me._default
+    End Function
+End Class
+
 Public Class CDataDriverClone
     Private _tables As Dictionary(Of String, CDataObject)
+    Private _connectionProperties As New Dictionary(Of String, CDataConnectionProperty)
     Private _procedureTable As DataTable
     Public columnsFill As Boolean = False
 
+    Public Sub addProperty(name As String, index As Integer, defaultValue As String)
+        Me._connectionProperties.Add(name, New CDataConnectionProperty(index, defaultValue))
+    End Sub
+
+    Public Function getProperty(name As String) As CDataConnectionProperty
+        Return Me._connectionProperties(name)
+    End Function
+
     Public Sub setObjects(cdataObjects As Dictionary(Of String, CDataObject))
         _tables = cdataObjects
+        _tables.Add("sys_tables", New CDataObject("sys_tables", "SYSTABLE"))
+        _tables.Add("sys_catalogs", New CDataObject("sys_catalogs", "SYSTABLE"))
+        _tables.Add("sys_schemas", New CDataObject("sys_schemas", "SYSTABLE"))
+        _tables.Add("sys_tablecolumns", New CDataObject("sys_tablecolumns", "SYSTABLE"))
+        _tables.Add("sys_procedures", New CDataObject("sys_procedures", "SYSTABLE"))
+        _tables.Add("sys_procedureparameters", New CDataObject("sys_procedureparameters", "SYSTABLE"))
+        _tables.Add("sys_keycolumns", New CDataObject("sys_keycolumns", "SYSTABLE"))
+        _tables.Add("sys_indexes", New CDataObject("sys_indexes", "SYSTABLE"))
+        _tables.Add("sys_connection_props", New CDataObject("sys_connection_props", "SYSTABLE"))
+        _tables.Add("sys_sqlinfo", New CDataObject("sys_sqlinfo", "SYSTABLE"))
+        _tables.Add("sys_identity", New CDataObject("sys_identity", "SYSTABLE"))
     End Sub
 
     Public Function getTableNames() As List(Of String)
@@ -143,6 +181,9 @@ Module CDataDriver
                 End If
 
                 CDataDriver.driverClone(driver, connectionString)
+
+                Form1.getSelected().fill_autocomplete(CDataDriver.clone.getTableNames())
+
             End Using
 
             Return True
@@ -152,6 +193,11 @@ Module CDataDriver
             Return False
         End Try
     End Function
+
+    Public Sub clearClone()
+        clone = Nothing
+        clone = New CDataDriverClone()
+    End Sub
 
     Public Function driverClone(driver As String, connectionString As String)
         Try

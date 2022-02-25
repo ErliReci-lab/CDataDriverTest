@@ -38,6 +38,7 @@ Partial Class Form1
         Me.AddProxyToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AddLogVerbosity3ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AddLogVerbosity5ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.StoredProcedureToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.QueryToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem4 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem5 = New System.Windows.Forms.ToolStripMenuItem()
@@ -48,10 +49,9 @@ Partial Class Form1
         Me.ToolStripMenuItem3 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.SelectToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.SystablesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.SystablecolumnsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TablesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ViewsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SystemToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ConnectionToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.TestToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
@@ -79,7 +79,6 @@ Partial Class Form1
         Me.tabHolder = New System.Windows.Forms.TabControl()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.SaveFileDialog1 = New System.Windows.Forms.SaveFileDialog()
-        Me.StoredProcedureToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Panel1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
@@ -113,7 +112,7 @@ Partial Class Form1
         Me.Panel1.Location = New System.Drawing.Point(0, 28)
         Me.Panel1.Margin = New System.Windows.Forms.Padding(4)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1235, 82)
+        Me.Panel1.Size = New System.Drawing.Size(1085, 83)
         Me.Panel1.TabIndex = 2
         '
         'Button3
@@ -178,10 +177,10 @@ Partial Class Form1
         '
         Me.StatusStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
         Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.queryStatus, Me.connectionStatus})
-        Me.StatusStrip1.Location = New System.Drawing.Point(0, 568)
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 518)
         Me.StatusStrip1.Name = "StatusStrip1"
         Me.StatusStrip1.Padding = New System.Windows.Forms.Padding(1, 0, 19, 0)
-        Me.StatusStrip1.Size = New System.Drawing.Size(1235, 30)
+        Me.StatusStrip1.Size = New System.Drawing.Size(1085, 30)
         Me.StatusStrip1.TabIndex = 7
         Me.StatusStrip1.Text = "StatusStrip1"
         '
@@ -208,7 +207,7 @@ Partial Class Form1
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Padding = New System.Windows.Forms.Padding(5, 2, 0, 2)
-        Me.MenuStrip1.Size = New System.Drawing.Size(1235, 28)
+        Me.MenuStrip1.Size = New System.Drawing.Size(1085, 28)
         Me.MenuStrip1.TabIndex = 8
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -236,6 +235,12 @@ Partial Class Form1
         Me.AddLogVerbosity5ToolStripMenuItem.Name = "AddLogVerbosity5ToolStripMenuItem"
         Me.AddLogVerbosity5ToolStripMenuItem.Size = New System.Drawing.Size(236, 26)
         Me.AddLogVerbosity5ToolStripMenuItem.Text = "Add Log (Verbosity 5)"
+        '
+        'StoredProcedureToolStripMenuItem
+        '
+        Me.StoredProcedureToolStripMenuItem.Name = "StoredProcedureToolStripMenuItem"
+        Me.StoredProcedureToolStripMenuItem.Size = New System.Drawing.Size(236, 26)
+        Me.StoredProcedureToolStripMenuItem.Text = "Stored Procedure"
         '
         'QueryToolStripMenuItem1
         '
@@ -292,34 +297,28 @@ Partial Class Form1
         '
         'SelectToolStripMenuItem1
         '
-        Me.SelectToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SystablesToolStripMenuItem, Me.SystablecolumnsToolStripMenuItem, Me.TablesToolStripMenuItem, Me.ViewsToolStripMenuItem})
+        Me.SelectToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TablesToolStripMenuItem, Me.ViewsToolStripMenuItem, Me.SystemToolStripMenuItem})
         Me.SelectToolStripMenuItem1.Name = "SelectToolStripMenuItem1"
         Me.SelectToolStripMenuItem1.Size = New System.Drawing.Size(224, 26)
         Me.SelectToolStripMenuItem1.Text = "Select"
         '
-        'SystablesToolStripMenuItem
-        '
-        Me.SystablesToolStripMenuItem.Name = "SystablesToolStripMenuItem"
-        Me.SystablesToolStripMenuItem.Size = New System.Drawing.Size(206, 26)
-        Me.SystablesToolStripMenuItem.Text = "sys_tables"
-        '
-        'SystablecolumnsToolStripMenuItem
-        '
-        Me.SystablecolumnsToolStripMenuItem.Name = "SystablecolumnsToolStripMenuItem"
-        Me.SystablecolumnsToolStripMenuItem.Size = New System.Drawing.Size(206, 26)
-        Me.SystablecolumnsToolStripMenuItem.Text = "sys_tablecolumns"
-        '
         'TablesToolStripMenuItem
         '
         Me.TablesToolStripMenuItem.Name = "TablesToolStripMenuItem"
-        Me.TablesToolStripMenuItem.Size = New System.Drawing.Size(206, 26)
+        Me.TablesToolStripMenuItem.Size = New System.Drawing.Size(224, 26)
         Me.TablesToolStripMenuItem.Text = "Tables"
         '
         'ViewsToolStripMenuItem
         '
         Me.ViewsToolStripMenuItem.Name = "ViewsToolStripMenuItem"
-        Me.ViewsToolStripMenuItem.Size = New System.Drawing.Size(206, 26)
+        Me.ViewsToolStripMenuItem.Size = New System.Drawing.Size(224, 26)
         Me.ViewsToolStripMenuItem.Text = "Views"
+        '
+        'SystemToolStripMenuItem
+        '
+        Me.SystemToolStripMenuItem.Name = "SystemToolStripMenuItem"
+        Me.SystemToolStripMenuItem.Size = New System.Drawing.Size(224, 26)
+        Me.SystemToolStripMenuItem.Text = "System"
         '
         'ConnectionToolStripMenuItem1
         '
@@ -331,19 +330,19 @@ Partial Class Form1
         'TestToolStripMenuItem
         '
         Me.TestToolStripMenuItem.Name = "TestToolStripMenuItem"
-        Me.TestToolStripMenuItem.Size = New System.Drawing.Size(224, 26)
+        Me.TestToolStripMenuItem.Size = New System.Drawing.Size(169, 26)
         Me.TestToolStripMenuItem.Text = "Test"
         '
         'ToolStripSeparator2
         '
         Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(221, 6)
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(166, 6)
         '
         'InsertToolStripMenuItem
         '
         Me.InsertToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.GETANDREFRESHToolStripMenuItem, Me.REFRESHToolStripMenuItem})
         Me.InsertToolStripMenuItem.Name = "InsertToolStripMenuItem"
-        Me.InsertToolStripMenuItem.Size = New System.Drawing.Size(224, 26)
+        Me.InsertToolStripMenuItem.Size = New System.Drawing.Size(169, 26)
         Me.InsertToolStripMenuItem.Text = "InitiateAuth"
         '
         'GETANDREFRESHToolStripMenuItem
@@ -469,14 +468,14 @@ Partial Class Form1
         Me.connectionGrid.Name = "connectionGrid"
         Me.connectionGrid.RowHeadersVisible = False
         Me.connectionGrid.RowHeadersWidth = 51
-        Me.connectionGrid.Size = New System.Drawing.Size(298, 456)
+        Me.connectionGrid.Size = New System.Drawing.Size(261, 405)
         Me.connectionGrid.TabIndex = 9
         '
         'SplitContainer2
         '
         Me.SplitContainer2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.SplitContainer2.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.SplitContainer2.Location = New System.Drawing.Point(0, 110)
+        Me.SplitContainer2.Location = New System.Drawing.Point(0, 111)
         Me.SplitContainer2.Margin = New System.Windows.Forms.Padding(4)
         Me.SplitContainer2.Name = "SplitContainer2"
         '
@@ -487,8 +486,8 @@ Partial Class Form1
         'SplitContainer2.Panel2
         '
         Me.SplitContainer2.Panel2.Controls.Add(Me.connectionGrid)
-        Me.SplitContainer2.Size = New System.Drawing.Size(1235, 458)
-        Me.SplitContainer2.SplitterDistance = 930
+        Me.SplitContainer2.Size = New System.Drawing.Size(1085, 407)
+        Me.SplitContainer2.SplitterDistance = 817
         Me.SplitContainer2.SplitterWidth = 5
         Me.SplitContainer2.TabIndex = 10
         '
@@ -500,24 +499,18 @@ Partial Class Form1
         Me.tabHolder.Margin = New System.Windows.Forms.Padding(4)
         Me.tabHolder.Name = "tabHolder"
         Me.tabHolder.SelectedIndex = 0
-        Me.tabHolder.Size = New System.Drawing.Size(928, 456)
+        Me.tabHolder.Size = New System.Drawing.Size(815, 405)
         Me.tabHolder.TabIndex = 0
         '
         'OpenFileDialog1
         '
         Me.OpenFileDialog1.FileName = "OpenFileDialog1"
         '
-        'StoredProcedureToolStripMenuItem
-        '
-        Me.StoredProcedureToolStripMenuItem.Name = "StoredProcedureToolStripMenuItem"
-        Me.StoredProcedureToolStripMenuItem.Size = New System.Drawing.Size(236, 26)
-        Me.StoredProcedureToolStripMenuItem.Text = "Stored Procedure"
-        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1235, 598)
+        Me.ClientSize = New System.Drawing.Size(1085, 548)
         Me.Controls.Add(Me.SplitContainer2)
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.Panel1)
@@ -558,7 +551,6 @@ Partial Class Form1
     Friend WithEvents TestToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents QueryToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents SelectToolStripMenuItem1 As ToolStripMenuItem
-    Friend WithEvents SystablesToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
     Friend WithEvents ToolStripSeparator2 As ToolStripSeparator
@@ -575,7 +567,6 @@ Partial Class Form1
     Friend WithEvents NewTabToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents RemoveTabToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ToolStripSeparator3 As ToolStripSeparator
-    Friend WithEvents SystablecolumnsToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents TablesToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ViewsToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents Button3 As Button
@@ -599,4 +590,5 @@ Partial Class Form1
     Friend WithEvents ToolStripSeparator7 As ToolStripSeparator
     Friend WithEvents ToolStripMenuItem6 As ToolStripMenuItem
     Friend WithEvents StoredProcedureToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents SystemToolStripMenuItem As ToolStripMenuItem
 End Class
