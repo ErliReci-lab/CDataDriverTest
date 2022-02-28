@@ -79,93 +79,54 @@ Public Class queryTab
         Try
             'Form1.generateAuto()
             If queryEditor.Text.Trim() <> "" Then
-                Dim t = New With {.val = 0}
-                Dim factory = DbProviderFactories.GetFactory(Form1.driverField.Text)
-                Form1.changeStatus(Form1.StatusType.Query, "Conecting ...")
-                Form1.changeStatus(Form1.StatusType.Connection, "Conecting ...")
-                Using connection As DbConnection = factory.CreateConnection()
-                    connection.ConnectionString = Form1.connectionField.Text
-                    connection.Open()
-                    Form1.changeStatus(Form1.StatusType.Connection, "Connected")
-                    Dim queryToExecute = queryEditor.SelectedText.Trim()
-                    If queryToExecute Is Nothing Or queryToExecute = "" Then
-                        queryToExecute = queryEditor.Text
-                        If My.Settings.FromatExecute Then
-                            formatEditor()
-                        End If
+                Dim queryToExecute = queryEditor.SelectedText.Trim()
+                If queryToExecute Is Nothing Or queryToExecute = "" Then
+                    queryToExecute = queryEditor.Text
+                    If My.Settings.FromatExecute Then
+                        formatEditor()
                     End If
-                    queryToExecute = queryToExecute.Replace(vbNewLine, "")
-                    Dim queries As String() = queryToExecute.Split(New Char() {";"c}, StringSplitOptions.RemoveEmptyEntries)
-                    Dim nrSelects = queries.Count(Function(x) x.ToLower().Contains("select"))
-                    'Dim nrNoSelects = queries.Count(Function(x) Not x.ToLower().Contains("select"))
-                    Dim resultNoSelects = New List(Of String())
-                    If queries.Length - nrSelects > 0 Then
-                        nrSelects += 1
-                    End If
-                    resultViewHolder.Controls.Clear()
-                    resultViewHolder.RowStyles.Clear()
-                    resultViewHolder.RowCount = 0
-                    For Each query In queries
-                        Try
-                            If query IsNot Nothing AndAlso (query <> "" And query <> " ") Then
-                                Form1.changeStatus(Form1.StatusType.Query, "Querying ...")
-                                Dim command As DbCommand = factory.CreateCommand()
-                                command.CommandText = query
-                                command.Connection = connection
-                                If query.ToLower().Contains("select") Then
-                                    Dim adapter As DbDataAdapter = factory.CreateDataAdapter()
-                                    Dim a = factory.CreateCommandBuilder()
-                                    adapter.SelectCommand = command
-                                    Dim table As DataTable = New DataTable()
-                                    adapter.Fill(table)
-                                    Form1.changeStatus(Form1.StatusType.Query, "Filling ...")
-                                    resultViewHolder.RowStyles.Add(New RowStyle(SizeType.Percent, 100 / nrSelects))
-                                    Dim resultView As New DataGridView()
-                                    resultView.Dock = DockStyle.Fill
-                                    resultView.DataSource = table
-                                    resultView.AllowUserToAddRows = False
-                                    resultView.AllowUserToDeleteRows = False
-                                    resultView.ReadOnly = True
-                                    resultViewHolder.Controls.Add(resultView, 0, resultViewHolder.RowCount)
-                                    resultViewHolder.RowCount += 1
-                                Else
-                                    Dim state = command.ExecuteScalar()
-                                    If state IsNot Nothing Then
-                                        resultNoSelects.Add(New String() {query, "Successful"})
-                                    Else
-                                        resultNoSelects.Add(New String() {query, "Failed"})
-                                    End If
-                                End If
-                            End If
-                        Catch ex As Exception
+                End If
 
-                        End Try
-                    Next
-                    If queries.Length - nrSelects > 0 Then
-                        Dim table As DataTable = New DataTable()
-                        table.Columns.Add("Query")
-                        table.Columns.Add("Status")
-                        For Each query In resultNoSelects
-                            table.Rows.Add(New String() {query(0), query(1)})
-                        Next
-                        resultViewHolder.RowStyles.Add(New RowStyle(SizeType.Percent, 100 / nrSelects))
-                        Dim resultView As New DataGridView()
-                        resultView.Dock = DockStyle.Fill
-                        resultView.DataSource = table
-                        resultView.AllowUserToAddRows = False
-                        resultView.AllowUserToDeleteRows = False
-                        resultView.ReadOnly = True
-                        resultViewHolder.Controls.Add(resultView, 0, resultViewHolder.RowCount)
-                        resultViewHolder.RowCount += 1
-                    End If
-                    Form1.changeStatus(Form1.StatusType.Query, "Done")
-                End Using
-                Form1.changeStatus(Form1.StatusType.Connection, "Done")
+                queryToExecute = queryToExecute.Replace(vbNewLine, "")
+                Dim queries As String() = queryToExecute.Split(New Char() {";"c}, StringSplitOptions.RemoveEmptyEntries)
+                Dim queryWithSelect = queries.Where(Function(x) x.ToLower().Contains("select"))
+                Dim otherQueries = queries.Where(Function(x) Not x.ToLower().Contains("select"))
+                resultViewHolder.Controls.Clear()
+                resultViewHolder.RowStyles.Clear()
+                resultViewHolder.RowCount = 0
+
+
+                Dim results = Core.executeSelects(queryWithSelect.ToArray(), Form1.driverField.Text, Form1.connectionField.Text)
+
+                For Each table In results
+                    resultViewHolder.RowStyles.Add(New RowStyle(SizeType.Percent, 100 / queryWithSelect.Count() + queryWithSelect.Count()))
+                    Dim resultView As New DataGridView()
+                    resultView.Dock = DockStyle.Fill
+                    resultView.DataSource = table
+                    resultView.AllowUserToAddRows = False
+                    resultView.AllowUserToDeleteRows = False
+                    resultView.ReadOnly = True
+                    resultViewHolder.Controls.Add(resultView, 0, resultViewHolder.RowCount)
+                    resultViewHolder.RowCount += 1
+                Next
+
+
+                If otherQueries.Count() > 0 Then
+                    resultViewHolder.RowStyles.Add(New RowStyle(SizeType.Percent, 100 / queryWithSelect.Count() + queryWithSelect.Count()))
+                    Dim table = Core.executeQueries(otherQueries.ToArray(), Form1.driverField.Text, Form1.connectionField.Text)
+                    Dim resultView As New DataGridView()
+                    resultView.Dock = DockStyle.Fill
+                    resultView.DataSource = table
+                    resultView.AllowUserToAddRows = False
+                    resultView.AllowUserToDeleteRows = False
+                    resultView.ReadOnly = True
+                    resultViewHolder.Controls.Add(resultView, 0, resultViewHolder.RowCount)
+                    resultViewHolder.RowCount += 1
+                End If
+
             End If
         Catch ex As Exception
             UI.errorBox(ex.Message, ex.StackTrace)
-            Form1.changeStatus(Form1.StatusType.Query, "Error")
-            Form1.changeStatus(Form1.StatusType.Connection, "Error")
         End Try
     End Sub
 End Class

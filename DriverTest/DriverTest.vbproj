@@ -154,7 +154,8 @@
     <Compile Include="Forms\StoredProcedure.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Modules\CdataDriver.vb" />
+    <Compile Include="Modules\CacheSystem.vb" />
+    <Compile Include="Modules\Core.vb" />
     <Compile Include="Modules\UI.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">

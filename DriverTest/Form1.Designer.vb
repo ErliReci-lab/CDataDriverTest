@@ -79,6 +79,10 @@ Partial Class Form1
         Me.tabHolder = New System.Windows.Forms.TabControl()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.SaveFileDialog1 = New System.Windows.Forms.SaveFileDialog()
+        Me.InsertToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator8 = New System.Windows.Forms.ToolStripSeparator()
+        Me.CodeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem7 = New System.Windows.Forms.ToolStripMenuItem()
         Me.Panel1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
@@ -213,7 +217,7 @@ Partial Class Form1
         '
         'QuickToolStripMenuItem
         '
-        Me.QuickToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AddProxyToolStripMenuItem, Me.AddLogVerbosity3ToolStripMenuItem, Me.AddLogVerbosity5ToolStripMenuItem, Me.StoredProcedureToolStripMenuItem})
+        Me.QuickToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AddProxyToolStripMenuItem, Me.AddLogVerbosity3ToolStripMenuItem, Me.AddLogVerbosity5ToolStripMenuItem, Me.StoredProcedureToolStripMenuItem, Me.ToolStripSeparator8, Me.CodeToolStripMenuItem})
         Me.QuickToolStripMenuItem.Name = "QuickToolStripMenuItem"
         Me.QuickToolStripMenuItem.Size = New System.Drawing.Size(60, 24)
         Me.QuickToolStripMenuItem.Text = "Quick"
@@ -244,7 +248,7 @@ Partial Class Form1
         '
         'QueryToolStripMenuItem1
         '
-        Me.QueryToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem4, Me.ToolStripMenuItem5, Me.ToolStripSeparator4, Me.ToolStripMenuItem1, Me.ToolStripSeparator5, Me.ToolStripMenuItem2, Me.ToolStripMenuItem3, Me.ToolStripSeparator1, Me.SelectToolStripMenuItem1})
+        Me.QueryToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem4, Me.ToolStripMenuItem5, Me.ToolStripSeparator4, Me.ToolStripMenuItem1, Me.ToolStripSeparator5, Me.ToolStripMenuItem2, Me.ToolStripMenuItem3, Me.ToolStripSeparator1, Me.SelectToolStripMenuItem1, Me.InsertToolStripMenuItem1})
         Me.QueryToolStripMenuItem1.Name = "QueryToolStripMenuItem1"
         Me.QueryToolStripMenuItem1.Size = New System.Drawing.Size(62, 24)
         Me.QueryToolStripMenuItem1.Text = "Query"
@@ -330,19 +334,19 @@ Partial Class Form1
         'TestToolStripMenuItem
         '
         Me.TestToolStripMenuItem.Name = "TestToolStripMenuItem"
-        Me.TestToolStripMenuItem.Size = New System.Drawing.Size(169, 26)
+        Me.TestToolStripMenuItem.Size = New System.Drawing.Size(224, 26)
         Me.TestToolStripMenuItem.Text = "Test"
         '
         'ToolStripSeparator2
         '
         Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(166, 6)
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(221, 6)
         '
         'InsertToolStripMenuItem
         '
         Me.InsertToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.GETANDREFRESHToolStripMenuItem, Me.REFRESHToolStripMenuItem})
         Me.InsertToolStripMenuItem.Name = "InsertToolStripMenuItem"
-        Me.InsertToolStripMenuItem.Size = New System.Drawing.Size(169, 26)
+        Me.InsertToolStripMenuItem.Size = New System.Drawing.Size(224, 26)
         Me.InsertToolStripMenuItem.Text = "InitiateAuth"
         '
         'GETANDREFRESHToolStripMenuItem
@@ -506,6 +510,30 @@ Partial Class Form1
         '
         Me.OpenFileDialog1.FileName = "OpenFileDialog1"
         '
+        'InsertToolStripMenuItem1
+        '
+        Me.InsertToolStripMenuItem1.Name = "InsertToolStripMenuItem1"
+        Me.InsertToolStripMenuItem1.Size = New System.Drawing.Size(224, 26)
+        Me.InsertToolStripMenuItem1.Text = "Insert"
+        '
+        'ToolStripSeparator8
+        '
+        Me.ToolStripSeparator8.Name = "ToolStripSeparator8"
+        Me.ToolStripSeparator8.Size = New System.Drawing.Size(233, 6)
+        '
+        'CodeToolStripMenuItem
+        '
+        Me.CodeToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem7})
+        Me.CodeToolStripMenuItem.Name = "CodeToolStripMenuItem"
+        Me.CodeToolStripMenuItem.Size = New System.Drawing.Size(236, 26)
+        Me.CodeToolStripMenuItem.Text = "Code"
+        '
+        'ToolStripMenuItem7
+        '
+        Me.ToolStripMenuItem7.Name = "ToolStripMenuItem7"
+        Me.ToolStripMenuItem7.Size = New System.Drawing.Size(224, 26)
+        Me.ToolStripMenuItem7.Text = "VB .Net"
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -591,4 +619,8 @@ Partial Class Form1
     Friend WithEvents ToolStripMenuItem6 As ToolStripMenuItem
     Friend WithEvents StoredProcedureToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents SystemToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents InsertToolStripMenuItem1 As ToolStripMenuItem
+    Friend WithEvents ToolStripSeparator8 As ToolStripSeparator
+    Friend WithEvents CodeToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ToolStripMenuItem7 As ToolStripMenuItem
 End Class
